@@ -1,0 +1,14 @@
+.Header {
+  text-align: center;
+}
+
+.Header-logo {
+  animation: Home-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.Header-header {
+  background-color: #009688;
+  padding: 20px;
+  color: white;
+}

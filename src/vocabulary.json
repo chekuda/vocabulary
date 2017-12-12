@@ -1,0 +1,19 @@
+{
+  "words": [{
+    "wordinEnglish": "shred",
+    "definition": {
+      "noum": ["fragmento", "pizca"],
+      "verb": "hacer trizas",
+      "adjetive": "",
+      "adverb": ""
+    }
+  },{
+    "wordinEnglish": "snap",
+    "definition": {
+      "noum": ["chasquido", "instantanea", "ola", "foto", "mordisco"],
+      "verb": ["tomar una foto", "chasquear", "romper"],
+      "adjetive": "",
+      "adverb": ""
+    }
+  }]
+}

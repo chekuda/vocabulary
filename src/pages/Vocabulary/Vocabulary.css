@@ -1,0 +1,37 @@
+.test-part {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-color: transparent;
+}
+.mainWord-word {
+  padding: 0 20px 20px 20px;
+}
+.title-mainword{
+  padding: 10px 10px 20px 10px;
+}
+.translation-input{
+  text-align: center;
+  font-size: 14px;
+}
+.center-part{
+  padding: 20px 0;
+  background-color: #eaeaea;
+}
+.check-button{
+  margin: 30px;
+  padding: 10px;
+}
+.result .green{
+  background-color: green
+}
+.result .red{
+  background-color: red
+}
+.word{
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.write-example{
+  padding-top: 10px;
+}
