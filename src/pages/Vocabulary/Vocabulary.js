@@ -60,7 +60,7 @@ class Home extends Component {
       date: new Date(),
       correct: isRightAnswer,
       sentenceExample,
-      answer
+      answer: answer.toLocaleLowerCase()
     }
   }
 

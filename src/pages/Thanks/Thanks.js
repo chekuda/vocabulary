@@ -40,8 +40,7 @@ class Thanks extends Component {
   render() {
     return (
       <div className="Thanks">
-        <Header title='Thanks'/>
-
+        <Header title='Well Done'/>
         { this.getOveralView() }
         { this.displayResults() }
       </div>
