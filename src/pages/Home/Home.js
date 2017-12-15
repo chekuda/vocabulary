@@ -10,7 +10,7 @@ class Home extends Component {
       redirect: '/vocabulary'
     },{
       name: 'Update Glossary',
-      redirect: '/updateglosary'
+      redirect: '/'
     }]
   }
 
