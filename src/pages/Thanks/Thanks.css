@@ -1,0 +1,26 @@
+.answer-section {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+  background-color: #e4e4e4;
+  border-radius: 10px;
+}
+
+.answer-section.wrong {
+  background-color: rgba(247, 0, 0, 0.33);
+}
+
+.answer-section.right {
+  background-color: rgba(55, 197, 89, 0.4);
+}
+
+.answer-section p{
+  margin: 3px;
+}
+
+.overalView{
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}

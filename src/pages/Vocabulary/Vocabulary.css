@@ -1,4 +1,4 @@
-.test-part {
+.test-section {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -7,14 +7,14 @@
 .mainWord-word {
   padding: 0 20px 20px 20px;
 }
-.title-mainword{
+.title{
   padding: 10px 10px 20px 10px;
 }
 .translation-input{
   text-align: center;
   font-size: 14px;
 }
-.center-part{
+.center-section{
   padding: 20px 0;
   background-color: #eaeaea;
 }
@@ -22,16 +22,26 @@
   margin: 30px;
   padding: 10px;
 }
+.result {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
 .result .green{
-  background-color: green
+  background-color: green;
+  padding: 5px 0;
 }
 .result .red{
-  background-color: red
+  background-color: red;
+  padding: 5px 0;
 }
 .word{
   font-weight: bold;
   text-transform: capitalize;
 }
-.write-example{
+.sentence-example{
   padding-top: 10px;
+}
+.sentence{
+  width: 70%;
 }

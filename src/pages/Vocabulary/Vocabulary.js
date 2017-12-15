@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
 import vocabulary from '../../vocabulary.json'
+import Processbar from '../../components/Processbar/Processbar.jsx'
 import './Vocabulary.css';
 
 class Home extends Component {
@@ -12,7 +13,7 @@ class Home extends Component {
       current: 0,
       buttonState: 'Check',
       answer: '',
-      textArea: '',
+      sentenceExample: '',
       resultColor: ''
     }
     this.listOfAnswers = []
@@ -23,57 +24,58 @@ class Home extends Component {
     if(type === 'answer'){
       this.setState({ answer: value })
     } else {
-      this.setState({ textArea: value })
+      this.setState({ sentenceExample: value })
     }
   }
 
-  getcurrentMarkupText(){
+  getTestMarkup(){
     const { current, listOfWords } = this.state
     const currentWord = listOfWords[current]
 
     return (
-      <div className='center-part'>
-        <div className='test-part'>
+      <div className='center-section'>
+        <div className='test-section'>
           <div className='mainWord-word'>
-            <div className='title-mainword'>Word to translate</div>
+            <div className='title'>Word to translate</div>
             <div className='word'>{ currentWord.wordinEnglish }</div>
           </div>
           <div className='mainWord-word'>
-            <div className='title-mainword'>Translation</div>
+            <div className='title'>Translation</div>
             <input className='translation-input' type='text' onChange={({ target }) => this.onInputChange(target.value, 'answer')} value={ this.state.answer }/>
           </div>
         </div>
-        <div className='write-example'>
-        <div className='title-mainword'>Write a sentence with this word</div>
-          <textarea rows='3' onChange={({ target }) => this.onInputChange(target.value, 'textArea')} value={ this.state.textArea }></textarea>
+        <div className='sentence-example'>
+        <div className='title'>Write a sentence with this word</div>
+          <input className='sentence' onChange={({ target }) => this.onInputChange(target.value, 'sentenceExample')} value={ this.state.sentenceExample }/>
         </div>
       </div>
     )
   }
 
-  getAnswerObject(isRightAnswer){
-    const { listOfWords, current, textArea, answer } = this.state
+  setAnswerObject(isRightAnswer){
+    const { listOfWords, current, sentenceExample, answer } = this.state
 
     return {
       ...listOfWords[current],
       date: new Date(),
       correct: isRightAnswer,
-      textArea,
+      sentenceExample,
       answer
     }
   }
 
-  resetToMoveToNextStep() {
-    if(this.state.buttonState === 'Check') {
-      this.setState({ buttonState: 'Next' })
+  moveToNextStep() {
+    if(this.state.current === (this.state.listOfWords.length - 1)) {
+      sessionStorage.setItem('testResult', JSON.stringify(this.listOfAnswers))
+      window.location.href = '/thanks'
     } else {
       this.setState({
         current: this.state.current + 1,
         buttonState: 'Check',
         answer: '',
-        textArea: '',
+        sentenceExample: '',
         resultColor: ''
-       })
+        })
     }
   }
 
@@ -82,13 +84,13 @@ class Home extends Component {
 
     return (
       <ul>
-        { Object.keys(definition).map(ele => definition[ele] && <li>{`${ele}: ${definition[ele]}`}</li>)}
+       { Object.keys(definition).map((ele, index) => definition[ele] && <li key={index}><strong>{ ele }</strong>{`: ${definition[ele]}`}</li>)}
       </ul>
     )
   }
 
   checkAnswer() {
-    if(!this.state.answer || !this.state.textArea) return
+    if(!this.state.answer || !this.state.sentenceExample) return
 
     const { listOfWords, current } = this.state
     const currentWord = listOfWords[current]
@@ -96,21 +98,25 @@ class Home extends Component {
     const isRightAnswer = answerIsinDefinition > 0
 
     this.setState({ resultColor: isRightAnswer ? 'green' : 'red' })
-    this.listOfAnswers.push(this.getAnswerObject(isRightAnswer))
-    this.resetToMoveToNextStep()
+    this.setState({ buttonState: 'Next' })
+    this.listOfAnswers.push(this.setAnswerObject(isRightAnswer))
+    console.log(this.listOfAnswers)
   }
 
   render() {
     return (
       <div className="Home">
         <Header title='Vocabulary' />
-        { this.getcurrentMarkupText() }
+        <Processbar current={this.state.current}/>
+        { this.getTestMarkup() }
         <div className='result'>
         { this.state.answer && this.state.resultColor &&
           <div className={ this.state.resultColor }>{ this.displayResult() }</div>
         }
         </div>
-        <button className="check-button" onClick={ () => this.checkAnswer() }>{ this.state.buttonState }</button>
+        <button
+          className="check-button"
+          onClick={ () => this.state.buttonState === 'Check' ? this.checkAnswer() : this.moveToNextStep() }>{ this.state.buttonState }</button>
       </div>
     );
   }

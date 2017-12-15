@@ -15,5 +15,13 @@
       "adjetive": "",
       "adverb": ""
     }
+  },{
+    "wordinEnglish": "test",
+    "definition": {
+      "noum": ["test", "test", "test", "test", "test"],
+      "verb": ["tomar una foto", "chasquear", "romper"],
+      "adjetive": "",
+      "adverb": ""
+    }
   }]
 }
