@@ -43,6 +43,9 @@ class Thanks extends Component {
         <Header title='Well Done'/>
         { this.getOveralView() }
         { this.displayResults() }
+        <div className='button-section'>
+          <button className='main-button'>Back Home</button>
+        </div>
       </div>
     );
   }

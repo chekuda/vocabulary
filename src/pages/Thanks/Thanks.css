@@ -24,3 +24,17 @@
   justify-content: center;
   padding-top: 15px;
 }
+
+.button-section{
+  display: flex;
+  justify-content: center;
+}
+.main-button{
+  margin: 30px;
+  padding: 10px;
+  border: transparent;
+  background-color: #009688;
+  width: 150px;
+  color: #fff;
+  font-size: 15px;
+}
