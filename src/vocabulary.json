@@ -79,5 +79,37 @@
       "adjetive": "",
       "adverb": ""
     }
+  },{
+    "wordinEnglish": "reinforce",
+    "definition": {
+      "noum": "",
+      "verb": ["reforzarse", "armar"],
+      "adjetive": "",
+      "adverb": ""
+    }
+  },{
+    "wordinEnglish": "bond",
+    "definition": {
+      "noum": ["enlace", "conexion", "bono", "fianza", "obligacion"],
+      "verb": "garantizar",
+      "adjetive": "exclavo",
+      "adverb": ""
+    }
+  },{
+    "wordinEnglish": "enhance",
+    "definition": {
+      "noum": "",
+      "verb": ["mejorar", "aumentar", "realzar"],
+      "adjetive": "exclavo",
+      "adverb": ""
+    }
+  },{
+    "wordinEnglish": "smuggle",
+    "definition": {
+      "noum": "",
+      "verb": ["contrabandear", "introducir algo ilegalmente"],
+      "adjetive": "exclavo",
+      "adverb": ""
+    }
   }]
 }
