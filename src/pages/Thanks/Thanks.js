@@ -44,7 +44,7 @@ class Thanks extends Component {
         { this.getOveralView() }
         { this.displayResults() }
         <div className='button-section'>
-          <button className='main-button'>Back Home</button>
+          <button className='main-button' onClick={() => window.location.href = '/'}>Back Home</button>
         </div>
       </div>
     );

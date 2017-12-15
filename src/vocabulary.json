@@ -16,10 +16,66 @@
       "adverb": ""
     }
   },{
-    "wordinEnglish": "test",
+    "wordinEnglish": "threat",
     "definition": {
-      "noum": ["test", "test", "test", "test", "test"],
-      "verb": ["tomar una foto", "chasquear", "romper"],
+      "noum": ["amenaza", "spanto"],
+      "verb": "",
+      "adjetive": "",
+      "adverb": ""
+    }
+  },{
+    "wordinEnglish": "amid",
+    "definition": {
+      "noum": ["en medio de", "entre"],
+      "verb": "",
+      "adjetive": "",
+      "adverb": ""
+    }
+  },{
+    "wordinEnglish": "blender",
+    "definition": {
+      "noum": ["licuadora"],
+      "verb": "",
+      "adjetive": "",
+      "adverb": ""
+    }
+  },{
+    "wordinEnglish": "surged",
+    "definition": {
+      "noum": "",
+      "verb": ["hervir", "agitarse"],
+      "adjetive": "",
+      "adverb": ""
+    }
+  },{
+    "wordinEnglish": "bender",
+    "definition": {
+      "noum": ["juerga"],
+      "verb": "",
+      "adjetive": "",
+      "adverb": ""
+    }
+  },{
+    "wordinEnglish": "unbound",
+    "definition": {
+      "noum": "",
+      "verb": ["desatar"],
+      "adjetive": "",
+      "adverb": ""
+    }
+  },{
+    "wordinEnglish": "wisdom",
+    "definition": {
+      "noum": ["sabiduria", "juicio", "saber"],
+      "verb": "",
+      "adjetive": "",
+      "adverb": ""
+    }
+  },{
+    "wordinEnglish": "amusement",
+    "definition": {
+      "noum": ["diversion", "distraccion", "pasatiempo"],
+      "verb": "",
       "adjetive": "",
       "adverb": ""
     }

@@ -9,7 +9,7 @@ class Home extends Component {
   constructor(props){
     super(props)
     this.state = {
-      listOfWords: vocabulary.words,
+      listOfWords: this.suffleTheArray(),
       current: 0,
       buttonState: 'Check',
       answer: '',
@@ -17,7 +17,11 @@ class Home extends Component {
       resultColor: ''
     }
     this.listOfAnswers = []
+    console.log(this.state.listOfWords)
+  }
 
+  suffleTheArray() {
+    return vocabulary.words.sort(() => Math.random() * 2 - 1);
   }
 
   onInputChange(value, type){
