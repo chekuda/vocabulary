@@ -17,7 +17,6 @@ class Home extends Component {
       resultColor: ''
     }
     this.listOfAnswers = []
-    console.log(this.state.listOfWords)
   }
 
   suffleTheArray() {
