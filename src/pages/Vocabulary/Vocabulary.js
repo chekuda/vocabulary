@@ -63,7 +63,7 @@ class Home extends Component {
       date: new Date(),
       correct: isRightAnswer,
       sentenceExample,
-      answer: answer.toLocaleLowerCase()
+      answer
     }
   }
 
@@ -97,7 +97,7 @@ class Home extends Component {
 
     const { listOfWords, current } = this.state
     const currentWord = listOfWords[current]
-    const answerIsinDefinition = Object.keys(currentWord.definition).reduce((acc, prop) => currentWord.definition[prop].includes(this.state.answer) ? acc + 1 : acc, 0)
+    const answerIsinDefinition = Object.keys(currentWord.definition).reduce((acc, prop) => currentWord.definition[prop].includes(this.state.answer.toLocaleLowerCase()) ? acc + 1 : acc, 0)
     const isRightAnswer = answerIsinDefinition > 0
 
     this.setState({ resultColor: isRightAnswer ? 'green' : 'red' })
