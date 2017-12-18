@@ -21,12 +21,12 @@ class Home extends Component {
     this.testFetch()
   }
 
-  testFetch(){
-    fetch('/api')
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch( e => console.log(e))
-  }
+  // testFetch(){
+  //   fetch('/api')
+  //     .then(res => res.json())
+  //     .then(data => console.log(data))
+  //     .catch( e => console.log(e))
+  // }
 
   suffleTheArray() {
     return vocabulary.words.sort(() => Math.random() * 2 - 1);
