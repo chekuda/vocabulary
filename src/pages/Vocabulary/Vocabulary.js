@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
-import vocabulary from '../../vocabulary.json'
 import Processbar from '../../components/Processbar/Processbar.jsx'
+import FetchHelper from '../../components/fetchData/fetchData'
 import './Vocabulary.css';
 
 class Home extends Component {
@@ -9,7 +9,7 @@ class Home extends Component {
   constructor(props){
     super(props)
     this.state = {
-      listOfWords: this.suffleTheArray(),
+      listOfWords: [],
       current: 0,
       buttonState: 'Check',
       answer: '',
@@ -19,7 +19,12 @@ class Home extends Component {
     this.listOfAnswers = []
   }
 
-  suffleTheArray() {
+  componentWillMount(){
+    FetchHelper('http://backenvocabulary.herokuapp.com/api/getvocabulary/vocabulary')
+      .then(res => this.setState({ listOfWords: this.suffleTheArray(res) }))
+  }
+
+  suffleTheArray(vocabulary) {
     return vocabulary.words.sort(() => Math.random() * 2 - 1);
   }
 
@@ -110,8 +115,8 @@ class Home extends Component {
     return (
       <div className="Home">
         <Header title='Vocabulary' />
-        <Processbar current={this.state.current}/>
-        { this.getTestMarkup() }
+        { this.state.listOfWords.length > 0 && <Processbar current={this.state.current}/> }
+        { this.state.listOfWords.length > 0 && this.getTestMarkup() }
         <div className='result'>
         { this.state.answer && this.state.resultColor &&
           <div className={ this.state.resultColor }>{ this.displayResult() }</div>

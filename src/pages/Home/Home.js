@@ -15,9 +15,9 @@ class Home extends Component {
   }
 
   getSection(){
-    return this.sections.map(section => {
+    return this.sections.map((section, index) => {
       return (
-        <div className='section'>
+        <div key={index} className='section'>
           <a className="Home-intro" href={ section.redirect }>{ section.name }</a>
         </div>
       )
