@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd .. && npm install && npm run build"
   },
   "author": "Jose Luis Checa",
   "license": "ISC"
