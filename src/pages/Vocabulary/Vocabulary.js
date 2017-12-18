@@ -17,6 +17,15 @@ class Home extends Component {
       resultColor: ''
     }
     this.listOfAnswers = []
+
+    this.testFetch()
+  }
+
+  testFetch(){
+    fetch('/api')
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch( e => console.log(e))
   }
 
   suffleTheArray() {
