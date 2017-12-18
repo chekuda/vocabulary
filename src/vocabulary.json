@@ -2,8 +2,8 @@
   "words": [{
     "wordinEnglish": "shred",
     "definition": {
-      "noum": ["fragmento", "pizca"],
-      "verb": "hacer trizas",
+      "noum": ["fragmento", "pizca","trozo", "tira"],
+      "verb": ["hacer trizas", "cortar en tiras", "destruir", "cortar en julianas"],
       "adjetive": "",
       "adverb": ""
     }
@@ -34,7 +34,7 @@
   },{
     "wordinEnglish": "blender",
     "definition": {
-      "noum": ["licuadora"],
+      "noum": ["licuadora", "batidora", "mezclador", "mezcladora"],
       "verb": "",
       "adjetive": "",
       "adverb": ""
@@ -42,15 +42,15 @@
   },{
     "wordinEnglish": "surged",
     "definition": {
-      "noum": "",
-      "verb": ["hervir", "agitarse"],
+      "noum": ["explosion", "arrebato", "arranque", "acceso", "sobretension", "sobrecarga", "oleage"],
+      "verb": "",
       "adjetive": "",
       "adverb": ""
     }
   },{
     "wordinEnglish": "bender",
     "definition": {
-      "noum": ["juerga"],
+      "noum": ["juerga", "borrachera", "maricon", "bujarron"],
       "verb": "",
       "adjetive": "",
       "adverb": ""
@@ -59,14 +59,14 @@
     "wordinEnglish": "unbound",
     "definition": {
       "noum": "",
-      "verb": ["desatar"],
-      "adjetive": "",
+      "verb": "",
+      "adjetive": ["suelto"],
       "adverb": ""
     }
   },{
     "wordinEnglish": "wisdom",
     "definition": {
-      "noum": ["sabiduria", "juicio", "saber"],
+      "noum": ["sabiduria", "juicio", "saber", "sentido comun", "sensatez"],
       "verb": "",
       "adjetive": "",
       "adverb": ""
@@ -74,7 +74,7 @@
   },{
     "wordinEnglish": "amusement",
     "definition": {
-      "noum": ["diversion", "distraccion", "pasatiempo"],
+      "noum": ["diversion", "distraccion", "pasatiempo", "entretenimiento"],
       "verb": "",
       "adjetive": "",
       "adverb": ""
@@ -83,32 +83,32 @@
     "wordinEnglish": "reinforce",
     "definition": {
       "noum": "",
-      "verb": ["reforzarse", "armar"],
+      "verb": ["reforzar", "armar", "fortalezer", "confirmar"],
       "adjetive": "",
       "adverb": ""
     }
   },{
     "wordinEnglish": "bond",
     "definition": {
-      "noum": ["enlace", "conexion", "bono", "fianza", "obligacion"],
-      "verb": "garantizar",
-      "adjetive": "exclavo",
+      "noum": ["enlace", "compromiso", "bono", "fianza", "obligacion", "lazo", "vinculo", "ataduras", "cadenas"],
+      "verb": ["pegar"],
+      "adjetive": "",
       "adverb": ""
     }
   },{
     "wordinEnglish": "enhance",
     "definition": {
       "noum": "",
-      "verb": ["mejorar", "aumentar", "realzar"],
-      "adjetive": "exclavo",
+      "verb": ["mejorar", "aumentar", "realzar", "destacar"],
+      "adjetive": "",
       "adverb": ""
     }
   },{
     "wordinEnglish": "smuggle",
     "definition": {
       "noum": "",
-      "verb": ["contrabandear", "introducir algo ilegalmente"],
-      "adjetive": "exclavo",
+      "verb": ["contrabandear", "introducir algo ilegalmente", "traficar"],
+      "adjetive": "",
       "adverb": ""
     }
   }]
