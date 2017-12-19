@@ -20,7 +20,7 @@ class Home extends Component {
   }
 
   componentWillMount(){
-    Get('https://backenvocabulary.herokuapp.com/api/getvocabulary/vocabulary')
+    Get(`${process.env.REACT_APP_ENDPOINT_API}/api/getvocabulary/vocabulary`)
       .then(res => this.setState({ listOfWords: this.suffleTheArray(res) }))
   }
 
