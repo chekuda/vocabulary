@@ -1,5 +1,5 @@
 import React from 'react';
-import Vocabulary from './Header.css'
+import './Header.css'
 
 export default ({ title }) => {
   return (

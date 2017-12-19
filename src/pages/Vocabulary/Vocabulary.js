@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
 import Processbar from '../../components/Processbar/Processbar.jsx'
-import FetchHelper from '../../components/fetchData/fetchData'
+import { Get } from '../../components/fetchData/fetchData'
 import './Vocabulary.css';
 
 class Home extends Component {
@@ -20,11 +20,13 @@ class Home extends Component {
   }
 
   componentWillMount(){
-    FetchHelper('http://backenvocabulary.herokuapp.com/api/getvocabulary/vocabulary')
+    Get('http://backenvocabulary.herokuapp.com/api/getvocabulary/vocabulary')
       .then(res => this.setState({ listOfWords: this.suffleTheArray(res) }))
   }
 
   suffleTheArray(vocabulary) {
+    if(!vocabulary) return []
+
     return vocabulary.words.sort(() => Math.random() * 2 - 1);
   }
 
@@ -65,7 +67,7 @@ class Home extends Component {
 
     return {
       ...listOfWords[current],
-      date: new Date(),
+      date: new Date().toISOString().split('T')[0],
       correct: isRightAnswer,
       sentenceExample,
       answer

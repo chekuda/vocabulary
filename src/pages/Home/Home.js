@@ -11,6 +11,9 @@ class Home extends Component {
     },{
       name: 'Update Glossary',
       redirect: '/'
+    },{
+      name: 'List My Tests',
+      redirect: '/listtests'
     }]
   }
 

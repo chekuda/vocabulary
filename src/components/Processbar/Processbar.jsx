@@ -1,6 +1,6 @@
 import React from 'react';
 import vocabulary from '../../vocabulary.json'
-import Processbar from './Processbar.css'
+import './Processbar.css'
 
 export default ({ current }) => {
   const getCurrentProcess = () => {

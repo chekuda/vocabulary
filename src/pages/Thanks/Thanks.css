@@ -23,6 +23,7 @@
   display: flex;
   justify-content: center;
   padding-top: 15px;
+  width: 100%;
 }
 
 .button-section{

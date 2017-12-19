@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
-import { Post } from '../../components/fetchData/fetchData'
-import './Thanks.css';
+import './ListTest.css';
 
-class Thanks extends Component {
+class ListTest extends Component {
   constructor(props){
     super(props)
     this.results = this.getResults()
-  }
-
-  componentDidMount(){
-    if(!this.results.length) return
-
-    Post('http://backenvocabulary.herokuapp.com/api/savetest', { 'Content-Type': 'application/json' }, this.results)
-      .then(data => console.log(data))
   }
 
   getResults(){
@@ -46,17 +38,20 @@ class Thanks extends Component {
   }
 
   render() {
-    return (
-      <div className="Thanks">
-        <Header title='Well Done'/>
-        { this.getOveralView() }
-        { this.displayResults() }
-        <div className='button-section'>
-          <button className='main-button' onClick={() => window.location.href = '/'}>Back Home</button>
-        </div>
-      </div>
-    );
+
+    return <div>jose</div>
+
+    // return (
+    //   <div className="ListTest">
+    //     <Header title='Well Done'/>
+    //     { this.getOveralView() }
+    //     { this.displayResults() }
+    //     <div className='button-section'>
+    //       <button className='main-button' onClick={() => window.location.href = '/'}>Back Home</button>
+    //     </div>
+    //   </div>
+    // );
   }
 }
 
-export default Thanks;
+export default ListTest;

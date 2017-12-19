@@ -5,6 +5,7 @@ import './index.css';
 import Home from './pages/Home/Home';
 import Vocabulary from './pages/Vocabulary/Vocabulary';
 import Thanks from './pages/Thanks/Thanks';
+import ListTest from './pages/ListTest/ListTest';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
@@ -13,6 +14,7 @@ ReactDOM.render((
       <Route exact path='/' component={ Home }/>
       <Route path='/vocabulary' component={ Vocabulary }/>
       <Route path='/thanks' component={ Thanks }/>
+      <Route path='/listtests' component={ ListTest }/>
       {/* <Route path='/projects/:project' component={ Projects }/> */}
     </Switch>
   </BrowserRouter>
