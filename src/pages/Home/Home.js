@@ -9,11 +9,11 @@ class Home extends Component {
       name: 'Vocabulary',
       redirect: '/vocabulary'
     },{
+      name: 'Summaries',
+      redirect: '/summaries'
+    },{
       name: 'Update Glossary',
       redirect: '/'
-    },{
-      name: 'List My Tests',
-      redirect: '/listtests'
     }]
   }
 

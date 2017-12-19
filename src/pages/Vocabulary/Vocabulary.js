@@ -94,7 +94,7 @@ class Home extends Component {
 
     return (
       <ul>
-       { Object.keys(definition).map((ele, index) => definition[ele] && <li key={index}><strong>{ ele }</strong>{`: ${definition[ele].join(', ')}`}</li>)}
+       { Object.keys(definition).map((ele, index) => definition[ele].length > 0 && <li key={index}><strong>{ ele }</strong>{`: ${definition[ele].join(', ')}`}</li>)}
       </ul>
     )
   }

@@ -13,7 +13,7 @@ class Thanks extends Component {
     if(!this.results.length) return
 
     Post(`${process.env.REACT_APP_ENDPOINT_API}/api/savetest`, { 'Content-Type': 'application/json' }, this.results)
-      .then(data => console.log(data))
+      .then(({ success }) => console.log('Files has been saved? =>', success))
   }
 
   getResults(){
@@ -24,7 +24,7 @@ class Thanks extends Component {
   displayResults(){
     return this.results.map((answer, i) => {
       const classResult = answer.correct ? 'right' : 'wrong'
-      const definitions = answer.definition.noum.concat(answer.verb).join(', ')
+      const definitions = answer.definition.noum.concat(answer.definition.verb).join(', ')
 
       return (
         <div key={i} className={`answer-section ${classResult}`}>

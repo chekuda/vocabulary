@@ -1,0 +1,54 @@
+
+.badOveral {
+  background-color: rgba(255, 0, 0, 0.34);
+}
+
+.averageOveral{
+  background-color: rgba(241, 201, 56, 0.32);
+}
+
+.goodOveral{
+  background-color: rgba(29, 167, 59, 0.32);
+}
+
+.answer-section {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+  background-color: #e4e4e4;
+  border-radius: 10px;
+}
+
+.answer-section.wrong {
+  background-color: rgba(247, 0, 0, 0.33);
+}
+
+.answer-section.right {
+  background-color: rgba(55, 197, 89, 0.4);
+}
+
+.answer-section p{
+  margin: 3px;
+}
+
+.overalView{
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  width: 100%;
+}
+
+.button-section{
+  display: flex;
+  justify-content: center;
+}
+.main-button{
+  margin: 30px;
+  padding: 10px;
+  border: transparent;
+  background-color: #009688;
+  width: 150px;
+  color: #fff;
+  font-size: 15px;
+}
