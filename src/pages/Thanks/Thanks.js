@@ -12,7 +12,7 @@ class Thanks extends Component {
   componentDidMount(){
     if(!this.results.length) return
 
-    Post('http://backenvocabulary.herokuapp.com/api/savetest', { 'Content-Type': 'application/json' }, this.results)
+    Post('https://backenvocabulary.herokuapp.com/api/savetest', { 'Content-Type': 'application/json' }, this.results)
       .then(data => console.log(data))
   }
 
