@@ -24,7 +24,7 @@ class Thanks extends Component {
   displayResults(){
     return this.results.map((answer, i) => {
       const classResult = answer.correct ? 'right' : 'wrong'
-      const definitions = answer.definition.noum.concat(answer.verb).toString()
+      const definitions = answer.definition.noum.concat(answer.verb).join(', ')
 
       return (
         <div key={i} className={`answer-section ${classResult}`}>

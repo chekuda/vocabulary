@@ -94,7 +94,7 @@ class Home extends Component {
 
     return (
       <ul>
-       { Object.keys(definition).map((ele, index) => definition[ele] && <li key={index}><strong>{ ele }</strong>{`: ${definition[ele]}`}</li>)}
+       { Object.keys(definition).map((ele, index) => definition[ele] && <li key={index}><strong>{ ele }</strong>{`: ${definition[ele].join(', ')}`}</li>)}
       </ul>
     )
   }
@@ -110,7 +110,6 @@ class Home extends Component {
     this.setState({ resultColor: isRightAnswer ? 'green' : 'red' })
     this.setState({ buttonState: 'Next' })
     this.listOfAnswers.push(this.setAnswerObject(isRightAnswer))
-    console.log(this.listOfAnswers)
   }
 
   render() {
