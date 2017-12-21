@@ -12,7 +12,7 @@ class Thanks extends Component {
   componentDidMount(){
     if(!this.results.length) return
 
-    Post(`${process.env.REACT_APP_ENDPOINT_API}/api/savetest`, { 'Content-Type': 'application/json' }, this.results)
+    Post(`/api/savetest`, { 'Content-Type': 'application/json' }, this.results)
       .then(({ success }) => console.log('Files has been saved? =>', success))
   }
 

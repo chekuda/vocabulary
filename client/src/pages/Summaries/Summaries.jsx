@@ -14,7 +14,7 @@ class Summaries extends Component {
   }
 
   componentWillMount(){
-    Get(`${process.env.REACT_APP_ENDPOINT_API}/api/getListOfTests`)
+    Get('/api/getListOfTests')
       .then(({ success, listOfTest }) => {
         if(!success) return //Redirect to error page
 
