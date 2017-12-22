@@ -14,7 +14,7 @@ app.use(express.static(__dirname + '/client/build/'))
 
 routes(app)
 
-app.get('/', (req, res) => res.sendFile(__dirname + '/client/build/index.html'))
+app.get('*', (req, res) => res.sendFile(__dirname + '/client/build/index.html'))
 
 app.listen(port)
 
