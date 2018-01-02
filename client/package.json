@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
+    "d3": "^4.12.0",
+    "font-awesome": "^4.7.0",
     "jquery": "^1.9.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -11,6 +13,7 @@
     "react-scripts": "1.0.17",
     "reactstrap": "^5.0.0-alpha.4"
   },
+  "proxy": "http://localhost:3000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

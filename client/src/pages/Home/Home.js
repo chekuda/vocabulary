@@ -13,7 +13,7 @@ class Home extends Component {
       redirect: '/summaries'
     },{
       name: 'Update Glossary',
-      redirect: '/'
+      redirect: '/updateglosary'
     }]
   }
 

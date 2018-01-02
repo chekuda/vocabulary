@@ -1,5 +1,12 @@
+
+const builEndPoint = endpoint => {
+  return 'http://localhost:5000' + endpoint
+}
+
 export const Post = (endPoint, headers = {}, body) => {
-  return fetch(endPoint, {
+  const rightEnpoint = builEndPoint(endPoint)
+
+  return fetch(rightEnpoint, {
             headers,
             method: 'POST',
             body: JSON.stringify(body)
@@ -9,7 +16,9 @@ export const Post = (endPoint, headers = {}, body) => {
 }
 
 export const Get = endPoint => {
-  return fetch(endPoint)
+  const rightEnpoint = builEndPoint(endPoint)
+
+  return fetch(rightEnpoint)
     .then(res => res.json())
     .catch(err => console.log(err))
 }

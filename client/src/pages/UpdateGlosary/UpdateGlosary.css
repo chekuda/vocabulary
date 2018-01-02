@@ -1,0 +1,37 @@
+
+.vocabulary-list{
+  width: 75%;
+  margin: 0 auto;
+}
+.words-list{
+  position: relative;
+  padding: 5px;
+  list-style-type: circle;
+}
+
+.list-word{
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.list-icon{
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.fa.fa-refresh{
+  padding-right: 10px;
+  color: green;
+}
+.fa.fa-times{
+  color:red;
+}
+.add-new-one{
+  display: block;
+  padding: 5px;
+  color: #000;
+  font-size: 15px;
+  text-align: center;
+}
