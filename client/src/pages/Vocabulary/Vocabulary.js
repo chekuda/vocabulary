@@ -116,7 +116,7 @@ class Home extends Component {
     return (
       <div className="Home">
         <Header title='Vocabulary' />
-        { this.state.listOfWords.length > 0 && <Processbar current={this.state.current}/> }
+        { this.state.listOfWords.length > 0 && <Processbar current={ this.state.current } vocabulary={ this.state.listOfWords }/> }
         { this.state.listOfWords.length > 0 && this.getTestMarkup() }
         <div className='result'>
         { this.state.answer && this.state.resultColor &&

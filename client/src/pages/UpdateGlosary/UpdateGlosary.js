@@ -26,6 +26,11 @@ export default class UpdateGlosary extends Component {
     this.setState({ currentList: currentList, firstLoad: false })
   }
 
+  removeElement({ wordinEnglish }){
+    Post('/api/removeword', { 'Content-Type': 'application/json' }, { word: wordinEnglish })
+      .then(({ success }) => console.log(success))
+  }
+
   getListVocabularyMarkup(){
     const ListToShow = this.state.firstLoad ? this.state.vocabulary : this.state.currentList
 
@@ -38,7 +43,7 @@ export default class UpdateGlosary extends Component {
                 <div className='list-word'>{ word.wordinEnglish }</div>
                 <div className='list-icon'>
                   <span className='fa fa-refresh'></span>
-                  <span className='fa fa-times'></span>
+                  <span className='fa fa-times' onClick={() => this.removeElement(word)}></span>
                 </div>
               </li>
             )

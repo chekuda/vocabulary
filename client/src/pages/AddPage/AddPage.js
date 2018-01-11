@@ -1,24 +1,28 @@
 import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
-import { Get, Post } from '../../components/fetchData/fetchData'
+import { Post } from '../../components/fetchData/fetchData'
 import { ListGroup, ListGroupItem, Collapse } from 'reactstrap'
 import './AddPage.css'
 
 export default class UpdateGlosary extends Component {
-  constructor(){
-    super()
-    this.state = {
-      name: '',
-      noum: [],
-      verb: [],
-      adjetive: [],
-      adverb: []
-    }
+  saveNewWord(){
+    if(!this.state.name) return
+
+    Post('/api/addnewword', { 'Content-Type': 'application/json' }, this.state)
+      .then(({ success }) => {
+        if(success) {
+          alert('Word Saved')
+          window.location.href = '/'
+        } else{
+          alert('Could not save the word, please try again')
+        }
+      })
   }
 
 
   onInputChange({ value }, type) {
-    this.setState({ type: value })
+    this.setState({ [type]: value })
+    console.log(this.state)
   }
 
   addNewOneMarkup(){
@@ -57,7 +61,7 @@ export default class UpdateGlosary extends Component {
         <Header title='Add New Word' />
         { this.addNewOneMarkup() }
         <div className='button-section'>
-          <button className="save-button">
+          <button className="save-button" onClick={ () => this.saveNewWord() }>
             Save
           </button>
         </div>

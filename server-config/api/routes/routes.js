@@ -10,4 +10,10 @@ module.exports = (app) => {
 
   app.route('/api/savetest')
     .post(listControllers.savetest)
+
+  app.route('/api/addnewword')
+    .post(listControllers.addnewword)
+
+  app.route('/api/removeword')
+    .post(listControllers.removeword)
 }
