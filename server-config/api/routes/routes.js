@@ -1,19 +1,16 @@
+const express = require('express')
 const listControllers = require('../controllers/controllers')
 
-//API routes
-module.exports = (app) => {
-  app.route('/api/getvocabulary/:file')
-    .get(listControllers.getvocabulary)
+const apirouter = express.Router()
 
-  app.route('/api/getListOfTests')
-    .get(listControllers.getListOfTests)
+apirouter.get('/getvocabulary/:file', listControllers.getvocabulary)
 
-  app.route('/api/savetest')
-    .post(listControllers.savetest)
+apirouter.get('/getListOfTests', listControllers.getListOfTests)
 
-  app.route('/api/addnewword')
-    .post(listControllers.addnewword)
+apirouter.post('/savetest', listControllers.savetest)
 
-  app.route('/api/removeword')
-    .post(listControllers.removeword)
-}
+apirouter.post('/addnewword', listControllers.addnewword)
+
+apirouter.post('/removeword', listControllers.removeword)
+
+exports.apirouter = apirouter
