@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node server.js"
   },
-  "proxy": "http://localhost:3000",
   "author": "jose luis checa exposito",
   "license": "ISC",
   "dependencies": {
