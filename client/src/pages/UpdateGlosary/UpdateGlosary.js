@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
 import { Get, Post } from '../../components/fetchData/fetchData'
 import SearchBar from '../../components/SearchBar/SearchBar'
-import { ListGroup, ListGroupItem, Collapse } from 'reactstrap'
 import './UpdateGlosary.css'
 
 export default class UpdateGlosary extends Component {

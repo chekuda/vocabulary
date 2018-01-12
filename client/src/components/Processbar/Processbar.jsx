@@ -1,5 +1,4 @@
 import React from 'react';
-import vocabulary from '../../vocabulary.json'
 import './Processbar.css'
 
 export default ({ current, vocabulary }) => {

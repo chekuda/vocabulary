@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
 import { Post } from '../../components/fetchData/fetchData'
-import { ListGroup, ListGroupItem, Collapse } from 'reactstrap'
 import './AddPage.css'
 
 export default class UpdateGlosary extends Component {
