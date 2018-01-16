@@ -4,11 +4,6 @@ const fs = require('fs');
 
 const date = new Date().getTime()
 
-exports.getvocabulary = (req, res) => {
-  const file = req.params.file
-  res.sendFile(`${commonPaths.serviceFiles}/${file}.json`)
-}
-
 exports.savetest = (req, res) => {
   fs.writeFile(`${commonPaths.serviceFiles}/listTest/${date}.json`, JSON.stringify(req.body), (err) => {
     if (err){
@@ -51,52 +46,6 @@ exports.getListOfTests = (req, res) => {
     orderList(items)
    res.send({ success: true, listOfTest: createListObject(items) })
   });
-}
-
-exports.addnewword = (req, res) => {
-  if(!req.body || !vocabulary.words || !vocabulary.words.length) {
-    console.log('Cant add new word')
-    res.send({ success: false })
-  }
-
-  const newvocabulary = {
-    words: [ ...vocabulary.words ]
-  }
-
-  const formatTheVAlue = (val) => {
-    if (!val) return []
-
-    return val.split(',').map(ele => {
-      if(ele[0] === ' ') {
-        return ele.substring(1)
-      }
-      return ele
-    })
-  }
-
-  const formatRequest = () => {
-    const { name, noum, verb, adjetive, adverb } = req.body
-    return {
-      wordinEnglish: name,
-      definition: {
-        noum: formatTheVAlue(noum),
-        verb: formatTheVAlue(verb),
-        adjetive: formatTheVAlue(adjetive),
-        adverb: formatTheVAlue(adverb)
-      }
-    }
-  }
-
-  newvocabulary.words.push(formatRequest())
-
-  fs.writeFile(`${commonPaths.serviceFiles}/vocabulary.json`, JSON.stringify(newvocabulary), (err) => {
-    if (err){
-      res.send({ success: false })
-    }
-
-    console.log("The word was succesfully saved!");
-    res.send({ success: true })
-  })
 }
 
 exports.removeword = (req, res) => {
