@@ -20,14 +20,14 @@ class Home extends Component {
   }
 
   componentWillMount(){
-    Get('/api/getvocabulary/vocabulary')
+    Get('/api/getvocabulary')
       .then(res => this.setState({ listOfWords: this.suffleTheArray(res) }))
   }
 
   suffleTheArray(vocabulary) {
     if(!vocabulary) return []
 
-    return vocabulary.words.sort(() => Math.random() * 2 - 1);
+    return vocabulary.sort(() => Math.random() * 2 - 1);
   }
 
   onInputChange(value, type){
