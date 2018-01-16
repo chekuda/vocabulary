@@ -9,7 +9,7 @@ exports.getvocabulary = (req, res) => {
   Word.find({ 'user' : USER }, 'wordinEnglish definition', (err, docs) => {
     if (err) res.send(err)
 
-    res.send(docs)
+    res.send(test)
   })
 }
 
