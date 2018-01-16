@@ -12,12 +12,12 @@ class Thanks extends Component {
   componentDidMount(){
     if(!this.results.length) return
 
-    Post(`/api/savetest`, { 'Content-Type': 'application/json' }, this.results)
+    Post(`/api/savequiz`, { 'Content-Type': 'application/json' }, this.results)
       .then(({ success }) => console.log('Files has been saved? =>', success))
   }
 
   getResults(){
-    const results = sessionStorage.getItem('testResult')
+    const results = sessionStorage.getItem('quizResult')
     return  results ? JSON.parse(results) : []
   }
 

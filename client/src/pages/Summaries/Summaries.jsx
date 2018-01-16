@@ -9,17 +9,17 @@ class Summaries extends Component {
     super(props)
     this.state = {
       collapse: -1,
-      listOfTest: []
+      listOfQuiz: []
     }
   }
 
   componentWillMount(){
-    Get('/api/getListOfTests')
-      .then(({ success, listOfTest }) => {
+    Get('/api/getlistofquiz')
+      .then(({ success, listOfQuiz }) => {
         if(!success) return //Redirect to error page
 
-        console.log(listOfTest)
-        this.setState({ listOfTest })
+        console.log(listOfQuiz)
+        this.setState({ listOfQuiz })
       })
   }
 
@@ -66,23 +66,23 @@ class Summaries extends Component {
   }
 
   getMarkUpList(){
-    const { listOfTest } = this.state
-
+    const { listOfQuiz } = this.state
+    console.log(listOfQuiz)
     return (
       <ListGroup>
         {
-          listOfTest.map((element, index) => {
-            const date = new Date(parseInt(element.file, 10)).toDateString()
-            const currentListColor = this.getCurrentColor(element.data)
+          listOfQuiz.map((element, index) => {
+            const date = new Date(parseInt(element.date, 10)).toDateString()
+            const currentListColor = this.getCurrentColor(element.answers)
 
             return (
               <div key={index}>
                 <ListGroupItem onClick={() => this.toggle(index)} color={ currentListColor }>
                   <ListGroupItemHeading>{ date }</ListGroupItemHeading>
-                  <ListGroupItemText>Rights: { this.getOveralResults(element.data) }</ListGroupItemText>
+                  <ListGroupItemText>Rights: { this.getOveralResults(element.answers) }</ListGroupItemText>
                 </ListGroupItem>
                 <Collapse isOpen={this.state.collapse === index}>
-                  { this.displayResults(element.data) }
+                  { this.displayResults(element.answers) }
                 </Collapse>
               </div>
             )
@@ -96,7 +96,7 @@ class Summaries extends Component {
     return (
       <div className="Summaries">
         <Header title='Summaries'/>
-        { this.state.listOfTest.length > 0 &&  this.getMarkUpList() }
+        { this.state.listOfQuiz.length > 0 &&  this.getMarkUpList() }
         <div className='button-section'>
           <button className='main-button' onClick={() => window.location.href = '/'}>Back Home</button>
         </div>
