@@ -3,7 +3,19 @@ const Word = require('../models/word')
 //Im currently forcing the user to myself for the database
 const USER = 'chekuda'
 
+exports.getvocabulary = (req, res) => {
+  const user = req.body.user || USER
+
+  Word.find({ 'user' : USER }, 'wordinEnglish definition', (err, docs) => {
+    if (err) res.send(err)
+
+    res.send(docs)
+  })
+}
+
 exports.addnewword = (req, res) => {
+  const user = req.body.user || USER
+
   if(!req.body) {
     console.log('Cant add new word')
     res.send({ success: false })
@@ -23,7 +35,7 @@ exports.addnewword = (req, res) => {
     const { name, noum, verb, adjetive, adverb } = req.body
 
     return Word({
-      user: USER,
+      user: user,
       wordinEnglish: name,
       definition: {
         noum: formatTheVAlue(noum),
@@ -43,6 +55,24 @@ exports.addnewword = (req, res) => {
     } else {
       console.log('Word saved')
       res.send({ success: true, msg: 'Word saved'})
+    }
+  })
+}
+
+exports.removeword = (req, res) => {
+  const user = req.body.user || USER
+
+  if(!req.body.word) {
+    console.log('Cant remove the word')
+    res.send({ success: false, msg: 'Cant remove the word' })
+  }
+
+  Word.deleteOne({ 'wordinEnglish' : req.body.word, 'user' : user }, (err, doc) => {
+    if(err) {
+      console.log('Cant remove that word')
+      res.send({ success: false, msg: 'Cant remove that word' })
+    } else {
+      res.send({ success: true, msg: 'Word removed'})
     }
   })
 }

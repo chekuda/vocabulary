@@ -47,14 +47,3 @@ exports.getListOfTests = (req, res) => {
    res.send({ success: true, listOfTest: createListObject(items) })
   });
 }
-
-exports.removeword = (req, res) => {
-  if(!req.body.word || !vocabulary.words || !vocabulary.words.length) {
-    console.log('Cant remove the word')
-    res.send({ success: false })
-  }
-
-  const test = vocabulary.words.filter(word => word.wordinEnglish !== req.body.word)
-  //save the data in the file
-  res.send({ success: test })
-}

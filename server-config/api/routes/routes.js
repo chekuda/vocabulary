@@ -1,18 +1,17 @@
 const express = require('express')
 const listControllers = require('../controllers/controllers')
-const addWordController = require('../controllers/addnewword')
-const getVocabularyController = require('../controllers/getvocabulary')
+const wordController = require('../controllers/wordcontrollers')
 
 const apirouter = express.Router()
 
-apirouter.get('/getvocabulary', getVocabularyController.getvocabulary)
+apirouter.get('/getvocabulary', wordController.getvocabulary)
 
 apirouter.get('/getListOfTests', listControllers.getListOfTests)
 
 apirouter.post('/savetest', listControllers.savetest)
 
-apirouter.post('/addnewword', addWordController.addnewword)
+apirouter.post('/addnewword', wordController.addnewword)
 
-apirouter.post('/removeword', listControllers.removeword)
+apirouter.post('/removeword', wordController.removeword)
 
 exports.apirouter = apirouter
