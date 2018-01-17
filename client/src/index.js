@@ -10,12 +10,14 @@ import Thanks from './pages/Thanks/Thanks';
 import Summaries from './pages/Summaries/Summaries';
 import UpdateGlosary from './pages/UpdateGlosary/UpdateGlosary';
 import AddPage from './pages/AddPage/AddPage';
+import Login from './pages/Login/Login';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
   <BrowserRouter>
   	<Switch>
       <Route exact path='/' component={ Home }/>
+      <Route path='/login' component={ Login }/>
       <Route path='/vocabulary' component={ Vocabulary }/>
       <Route path='/thanks' component={ Thanks }/>
       <Route path='/summaries' component={ Summaries }/>
