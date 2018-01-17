@@ -31,13 +31,9 @@ exports.savequiz = (req, res) => {
   const newquiz = formatRequest()
 
   newquiz.save(err => {
-    if(err) {
-      console.log('Couldnt save the word')
-      res.send({ success: false, msg: err })
-    } else {
-      console.log('Word saved')
-      res.send({ success: true, msg: 'Word saved'})
-    }
+    if(err) res.status(401).send({ success: false, msg: err })
+
+    res.send({ success: true, msg: 'Word saved'})
   })
 }
 
@@ -45,7 +41,7 @@ exports.listOfQuiz = (req, res) => {
   const user = req.body.user || USER
 
   Quiz.find({ 'user' : USER },'date answers', (err, docs) => {
-    if (err) res.send({ success: false })
+    if(err) res.status(401).send({ success: false, msg: err })
 
    res.send({ success: true, listOfQuiz: docs })
   })

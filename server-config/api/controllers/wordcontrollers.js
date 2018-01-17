@@ -7,19 +7,18 @@ exports.getvocabulary = (req, res) => {
   const user = req.body.user || USER
 
   Word.find({ 'user' : USER }, 'wordinEnglish definition', (err, docs) => {
-    if (err) res.send(err)
+    if (err) {
+      res.status(401).send({ success: false, msg: err })
+    }
 
-    res.send(test)
+    res.send({ success: true, data: docs })
   })
 }
 
 exports.addnewword = (req, res) => {
   const user = req.body.user || USER
 
-  if(!req.body) {
-    console.log('Cant add new word')
-    res.send({ success: false })
-  }
+  if(!req.body) res.status(401).send({ success: false, msg: 'No Words received in the Backend' })
 
   const formatTheVAlue = (val) => {
     if (!val || !val.length) return []
@@ -49,13 +48,9 @@ exports.addnewword = (req, res) => {
   const newWord = formatRequest()
 
   newWord.save(err => {
-    if(err) {
-      console.log('Couldnt save the word')
-      res.send({ success: false, msg: err })
-    } else {
-      console.log('Word saved')
-      res.send({ success: true, msg: 'Word saved'})
-    }
+    if(err) res.send({ success: false, msg: err })
+
+    res.send({ success: true, msg: 'Word saved'})
   })
 }
 
@@ -68,11 +63,8 @@ exports.removeword = (req, res) => {
   }
 
   Word.deleteOne({ 'wordinEnglish' : req.body.word, 'user' : user }, (err, doc) => {
-    if(err) {
-      console.log('Cant remove that word')
-      res.send({ success: false, msg: 'Cant remove that word' })
-    } else {
-      res.send({ success: true, msg: 'Word removed'})
-    }
+    if(err) res.status(401).send({ success: false, msg: err })
+
+    res.send({ success: true, msg: 'Word removed'})
   })
 }
