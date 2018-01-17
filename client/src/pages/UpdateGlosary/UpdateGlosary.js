@@ -16,8 +16,8 @@ export default class UpdateGlosary extends Component {
   }
 
   componentWillMount(){
-    Get('/api/getvocabulary/vocabulary')
-    .then(res =>this.setState({ vocabulary: res.words }))
+    Get('/api/getvocabulary')
+      .then(({ data }) => this.setState({ vocabulary: data }))
   }
 
   onSearchTermChange = (current) =>{

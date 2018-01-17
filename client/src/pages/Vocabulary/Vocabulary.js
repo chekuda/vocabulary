@@ -20,14 +20,14 @@ class Home extends Component {
   }
 
   componentWillMount(){
-    Get('/api/getvocabulary/vocabulary')
-      .then(res => this.setState({ listOfWords: this.suffleTheArray(res) }))
+    Get('/api/getvocabulary')
+      .then(({ data }) => this.setState({ listOfWords: this.suffleTheArray(data) }))
   }
 
   suffleTheArray(vocabulary) {
     if(!vocabulary) return []
 
-    return vocabulary.words.sort(() => Math.random() * 2 - 1);
+    return vocabulary.sort(() => Math.random() * 2 - 1);
   }
 
   onInputChange(value, type){
@@ -38,7 +38,7 @@ class Home extends Component {
     }
   }
 
-  getTestMarkup(){
+  getQuizMarqup(){
     const { current, listOfWords } = this.state
     const currentWord = listOfWords[current]
 
@@ -76,7 +76,7 @@ class Home extends Component {
 
   moveToNextStep() {
     if(this.state.current === (this.state.listOfWords.length - 1)) {
-      sessionStorage.setItem('testResult', JSON.stringify(this.listOfAnswers))
+      sessionStorage.setItem('quizResult', JSON.stringify(this.listOfAnswers))
       window.location.href = '/thanks'
     } else {
       this.setState({
@@ -117,7 +117,7 @@ class Home extends Component {
       <div className="Home">
         <Header title='Vocabulary' />
         { this.state.listOfWords.length > 0 && <Processbar current={ this.state.current } vocabulary={ this.state.listOfWords }/> }
-        { this.state.listOfWords.length > 0 && this.getTestMarkup() }
+        { this.state.listOfWords.length > 0 && this.getQuizMarqup() }
         <div className='result'>
         { this.state.answer && this.state.resultColor &&
           <div className={ this.state.resultColor }>{ this.displayResult() }</div>
