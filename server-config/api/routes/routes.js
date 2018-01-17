@@ -1,5 +1,4 @@
 const express = require('express')
-const listControllers = require('../controllers/controllers')
 const wordController = require('../controllers/wordcontrollers')
 const quizControllers = require('../controllers/quizcontrollers')
 
