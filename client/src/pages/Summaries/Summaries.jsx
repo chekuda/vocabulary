@@ -15,12 +15,7 @@ class Summaries extends Component {
 
   componentWillMount(){
     Get('/api/getlistofquiz')
-      .then(({ success, listOfQuiz }) => {
-        if(!success) return //Redirect to error page
-
-        console.log(listOfQuiz)
-        this.setState({ listOfQuiz })
-      })
+      .then(({ listOfQuiz }) => this.setState({ listOfQuiz }))
   }
 
   displayResults(results){

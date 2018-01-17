@@ -21,7 +21,7 @@ class Home extends Component {
 
   componentWillMount(){
     Get('/api/getvocabulary')
-      .then(res => this.setState({ listOfWords: this.suffleTheArray(res) }))
+      .then(({ data }) => this.setState({ listOfWords: this.suffleTheArray(data) }))
   }
 
   suffleTheArray(vocabulary) {
