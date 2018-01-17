@@ -12,7 +12,7 @@ export const Post = (endPoint, headers = {}, body) => {
             body: JSON.stringify(body)
           })
           .then(res => res.json())
-          .catch(err => console.log(err))
+          .catch(({ msg }) => console.log(msg))
 }
 
 export const Get = endPoint => {
@@ -20,5 +20,5 @@ export const Get = endPoint => {
 
   return fetch(rightEnpoint)
     .then(res => res.json())
-    .catch(err => console.log(err))
+    .catch(({ msg }) => console.log(msg))
 }
