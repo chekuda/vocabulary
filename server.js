@@ -5,7 +5,7 @@ const cors = require('cors')
 const routes = require('./server-config/api/routes/routes')
 const dbconnection = require('./server-config/dbconnection/config')
 
-const port = 5000
+const port = process.env.POR || 5000
 const app = express()
 
 dbconnection.createMongooseConection()
