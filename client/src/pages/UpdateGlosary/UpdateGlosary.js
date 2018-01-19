@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
-import { Get, Post } from '../../components/fetchData/fetchData'
+import { Post } from '../../components/fetchData/fetchData'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import './UpdateGlosary.css'
 
 export default class UpdateGlosary extends Component {
   constructor(){
     super()
+    this.user = window.localStorage.getItem('vocabulary-user') || ''
     this.state = {
       vocabulary: [],
       firstLoad: true,
@@ -16,7 +17,7 @@ export default class UpdateGlosary extends Component {
   }
 
   componentWillMount(){
-    Get('/api/getvocabulary')
+    Post('/api/getvocabulary',{ 'Content-Type': 'application/json' },  { user: this.user })
       .then(({ data }) => this.setState({ vocabulary: data }))
   }
 
