@@ -44,7 +44,7 @@ export class SignUp extends Component {
 
 
   onInputChange({ value }, type) {
-    this.setState({ [type]: value })
+    this.setState({ [type]: value.toLowerCase() })
   }
 
   addLogiMarkup(){

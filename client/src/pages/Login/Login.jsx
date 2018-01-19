@@ -31,7 +31,7 @@ export class Login extends Component {
 
 
   onInputChange({ value }, type) {
-    this.setState({ [type]: value })
+    this.setState({ [type]: value.toLowerCase() })
   }
 
   addLogiMarkup(){
