@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
 import { Post } from '../../components/fetchData/fetchData'
+import { Redirect } from 'react-router-dom'
 import './Login.css'
 
-export default class UpdateGlosary extends Component {
+export class Login extends Component {
+  constructor(){
+    super()
+    this.state = {
+      didLogin: false
+    }
+  }
+
   login(){
     if(!this.state.username || !this.state.password) return
 
@@ -13,8 +21,9 @@ export default class UpdateGlosary extends Component {
           alert(`${msg}, Please try again`)
         }
         else {
-          window.sessionStorage.setItem('user-vocabulary-token', token)
-          window.location.href = '/'
+          window.localStorage.setItem('user-vocabulary-token', token)
+          window.localStorage.setItem('authed', true)
+          this.setState({ didLogin: true })
         }
       })
   }
@@ -49,7 +58,10 @@ export default class UpdateGlosary extends Component {
       <div className='login'>
         <Header title='Login' />
         { this.addLogiMarkup() }
+        { this.state.didLogin && <Redirect to={{ pathname: '/' }}/> }
       </div>
     )
   }
 }
+
+export default Login
