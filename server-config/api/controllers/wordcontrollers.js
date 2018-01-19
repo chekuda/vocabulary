@@ -6,7 +6,7 @@ const USER = 'chekuda'
 exports.getvocabulary = (req, res) => {
   const user = req.body.user || USER
 
-  Word.find({ 'user' : USER }, 'wordinEnglish definition', (err, docs) => {
+  Word.find({ 'user' : user }, 'wordinEnglish definition', (err, docs) => {
     if (err) {
       res.status(401).send({ success: false, msg: err })
     }

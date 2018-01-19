@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
 import Processbar from '../../components/Processbar/Processbar.jsx'
-import { Get } from '../../components/fetchData/fetchData'
+import { Post } from '../../components/fetchData/fetchData'
 import './Vocabulary.css';
 
 class Vocabulary extends Component {
 
   constructor(props){
     super(props)
+    this.user = window.localStorage.getItem('vocabulary-user') || ''
     this.state = {
       listOfWords: [],
       current: 0,
@@ -20,7 +21,7 @@ class Vocabulary extends Component {
   }
 
   componentWillMount(){
-    Get('/api/getvocabulary')
+    Post('/api/getvocabulary',{ 'Content-Type': 'application/json' },  { user: this.user })
       .then(({ data }) => this.setState({ listOfWords: this.suffleTheArray(data) }))
   }
 

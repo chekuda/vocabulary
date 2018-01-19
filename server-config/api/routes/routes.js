@@ -5,7 +5,7 @@ const userControllers = require('../controllers/usercontrollers')
 
 const apirouter = express.Router()
 
-apirouter.get('/getvocabulary', wordController.getvocabulary)
+apirouter.post('/getvocabulary', wordController.getvocabulary)
 
 apirouter.post('/getlistofquiz', quizControllers.listOfQuiz)
 
