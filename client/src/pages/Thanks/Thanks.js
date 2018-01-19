@@ -17,7 +17,7 @@ class Thanks extends Component {
   }
 
   getResults(){
-    const results = sessionStorage.getItem('quizResult')
+    const results = localStorage.getItem('quizResult')
     return  results ? JSON.parse(results) : []
   }
 

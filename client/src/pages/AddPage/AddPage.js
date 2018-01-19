@@ -21,7 +21,6 @@ export default class UpdateGlosary extends Component {
 
   onInputChange({ value }, type) {
     this.setState({ [type]: value })
-    console.log(this.state)
   }
 
   addNewOneMarkup(){

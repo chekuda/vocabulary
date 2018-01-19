@@ -11,20 +11,24 @@ import Summaries from './pages/Summaries/Summaries';
 import UpdateGlosary from './pages/UpdateGlosary/UpdateGlosary';
 import AddPage from './pages/AddPage/AddPage';
 import Login from './pages/Login/Login';
+import Verifytf from './components/verifywt/verifywt';
+import PrivateRoute from './components/PrivateRoute/privateRoute';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
   <BrowserRouter>
-  	<Switch>
-      <Route exact path='/' component={ Home }/>
+  <Verifytf>
+    <Switch>
       <Route path='/login' component={ Login }/>
-      <Route path='/vocabulary' component={ Vocabulary }/>
-      <Route path='/thanks' component={ Thanks }/>
-      <Route path='/summaries' component={ Summaries }/>
-      <Route path='/updateglosary' component={ UpdateGlosary }/>
-      <Route path='/addpage' component={ AddPage }/>
+      <PrivateRoute exact path='/' component={ Home }/>
+      <PrivateRoute path='/vocabulary' component={ Vocabulary }/>
+      <PrivateRoute path='/thanks' component={ Thanks }/>
+      <PrivateRoute path='/summaries' component={ Summaries }/>
+      <PrivateRoute path='/updateglosary' component={ UpdateGlosary }/>
+      <PrivateRoute path='/addpage' component={ AddPage }/>
       {/* <Route path='/projects/:project' component={ Projects }/> */}
     </Switch>
-  </BrowserRouter>
+  </Verifytf>
+</BrowserRouter>
 ), document.getElementById('root'))
 registerServiceWorker();
