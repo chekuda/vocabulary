@@ -1,3 +1,8 @@
+.Vocabulary {
+  text-align: center;
+  background-color: #eaeaea;
+}
+
 .test-section {
   display: flex;
   justify-content: center;
