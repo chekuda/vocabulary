@@ -15,14 +15,15 @@ export class Login extends Component {
   login(){
     if(!this.state.username || !this.state.password) return
 
-    Post('/api/userlogin', { 'Content-Type': 'application/json' }, this.state)
-      .then(({ success, token, msg }) => {
+    Post('/api/login', { 'Content-Type': 'application/json' }, this.state)
+      .then(({ success, token, msg, username }) => {
         if(!success) {
           alert(`${msg}, Please try again`)
         }
         else {
           window.localStorage.setItem('user-vocabulary-token', token)
           window.localStorage.setItem('authed', true)
+          window.localStorage.setItem('vocabulary-user', username)
           this.setState({ didLogin: true })
         }
       })
@@ -39,7 +40,7 @@ export class Login extends Component {
         <div className='login-block'>
           <div className='login-inputs'>
             <div className='item-input'>
-              <input type="text" className="form-control" placeholder="Email Address" onChange={({ target }) => this.onInputChange(target, 'username')}/>
+              <input type="text" className="form-control" placeholder="User Name" onChange={({ target }) => this.onInputChange(target, 'username')}/>
             </div>
             <div className='item-input'>
               <input type="password" className="form-control" placeholder="Password" onChange={({ target }) => this.onInputChange(target, 'password')}/>

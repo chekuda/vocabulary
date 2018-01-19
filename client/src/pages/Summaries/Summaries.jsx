@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
 import { ListGroup, ListGroupItem, Collapse, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
-import { Get } from '../../components/fetchData/fetchData'
+import { Post } from '../../components/fetchData/fetchData'
 import './Summaries.css';
 
 class Summaries extends Component {
   constructor(props){
     super(props)
+    this.user = window.localStorage.getItem('vocabulary-user') || ''
     this.state = {
       collapse: -1,
       listOfQuiz: []
@@ -14,7 +15,7 @@ class Summaries extends Component {
   }
 
   componentWillMount(){
-    Get('/api/getlistofquiz')
+    Post('/api/getlistofquiz', { 'Content-Type': 'application/json' },  { user: this.user })
       .then(({ listOfQuiz }) => this.setState({ listOfQuiz }))
   }
 

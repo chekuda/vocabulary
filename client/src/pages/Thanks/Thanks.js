@@ -7,12 +7,14 @@ class Thanks extends Component {
   constructor(props){
     super(props)
     this.results = this.getResults()
+    this.user = window.localStorage.getItem('vocabulary-user') || ''
   }
 
   componentDidMount(){
     if(!this.results.length) return
 
-    Post(`/api/savequiz`, { 'Content-Type': 'application/json' }, this.results)
+
+    Post(`/api/savequiz`, { 'Content-Type': 'application/json' },  { results: this.results, user: this.user })
       .then(({ success }) => console.log('Files has been saved? =>', success))
   }
 
