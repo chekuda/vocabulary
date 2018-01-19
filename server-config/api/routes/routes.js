@@ -7,7 +7,7 @@ const apirouter = express.Router()
 
 apirouter.get('/getvocabulary', wordController.getvocabulary)
 
-apirouter.get('/getlistofquiz', quizControllers.listOfQuiz)
+apirouter.post('/getlistofquiz', quizControllers.listOfQuiz)
 
 apirouter.post('/savequiz', quizControllers.savequiz)
 
@@ -15,7 +15,9 @@ apirouter.post('/addnewword', wordController.addnewword)
 
 apirouter.post('/removeword', wordController.removeword)
 
-apirouter.post('/userlogin', userControllers.login)
+apirouter.post('/login', userControllers.login)
+
+apirouter.post('/signup', userControllers.signup)
 
 apirouter.get('/verifytoken', userControllers.verifytoken)
 
