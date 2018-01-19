@@ -4,7 +4,7 @@ import Processbar from '../../components/Processbar/Processbar.jsx'
 import { Get } from '../../components/fetchData/fetchData'
 import './Vocabulary.css';
 
-class Home extends Component {
+class Vocabulary extends Component {
 
   constructor(props){
     super(props)
@@ -76,7 +76,7 @@ class Home extends Component {
 
   moveToNextStep() {
     if(this.state.current === (this.state.listOfWords.length - 1)) {
-      sessionStorage.setItem('quizResult', JSON.stringify(this.listOfAnswers))
+      localStorage.setItem('quizResult', JSON.stringify(this.listOfAnswers))
       window.location.href = '/thanks'
     } else {
       this.setState({
@@ -114,7 +114,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="Home">
+      <div className="Vocabulary">
         <Header title='Vocabulary' />
         { this.state.listOfWords.length > 0 && <Processbar current={ this.state.current } vocabulary={ this.state.listOfWords }/> }
         { this.state.listOfWords.length > 0 && this.getQuizMarqup() }
@@ -131,4 +131,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Vocabulary;
