@@ -17,4 +17,6 @@ apirouter.post('/removeword', wordController.removeword)
 
 apirouter.post('/userlogin', userControllers.login)
 
+apirouter.get('/verifytoken', userControllers.verifytoken)
+
 exports.apirouter = apirouter
