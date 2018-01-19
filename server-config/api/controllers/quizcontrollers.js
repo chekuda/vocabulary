@@ -10,7 +10,7 @@ exports.savequiz = (req, res) => {
     return Quiz({
       user: user,
       date: new Date().getTime(),
-      answers: req.body.map(element => {
+      answers: req.body.results.map(element => {
         return {
           sentenceExample: element.sentenceExample,
           answer: element.answer,
@@ -40,7 +40,7 @@ exports.savequiz = (req, res) => {
 exports.listOfQuiz = (req, res) => {
   const user = req.body.user || USER
 
-  Quiz.find({ 'user' : USER },'date answers', (err, docs) => {
+  Quiz.find({ 'user' : user },'date answers', (err, docs) => {
     if(err) res.status(401).send({ success: false, msg: err })
 
    res.send({ success: true, listOfQuiz: docs })

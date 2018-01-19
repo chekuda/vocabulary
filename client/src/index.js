@@ -13,6 +13,7 @@ import AddPage from './pages/AddPage/AddPage';
 import Login from './pages/Login/Login';
 import Verifytf from './components/verifywt/verifywt';
 import PrivateRoute from './components/PrivateRoute/privateRoute';
+import SignUp from './pages/SignUp/SignUp';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
@@ -20,6 +21,7 @@ ReactDOM.render((
   <Verifytf>
     <Switch>
       <Route path='/login' component={ Login }/>
+      <Route path='/signup' component={ SignUp }/>
       <PrivateRoute exact path='/' component={ Home }/>
       <PrivateRoute path='/vocabulary' component={ Vocabulary }/>
       <PrivateRoute path='/thanks' component={ Thanks }/>
