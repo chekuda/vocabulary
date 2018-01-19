@@ -15,10 +15,10 @@ export const Post = (endPoint, headers = {}, body) => {
           .catch(({ msg }) => console.log(msg))
 }
 
-export const Get = endPoint => {
+export const Get = (endPoint, headers = {}) => {
   const rightEnpoint = builEndPoint(endPoint)
 
-  return fetch(rightEnpoint)
+  return fetch(rightEnpoint, headers)
     .then(res => res.json())
     .catch(({ msg }) => console.log(msg))
 }
