@@ -9,7 +9,7 @@ exports.login = (req, res) => {
   const { username, password } = req.body
 
   if(username === testUser.username && password === testUser.password) {
-    token = jwt.sign({ admin: false }, process.env.SUPER_SECRET, { expiresIn: '10080m' })
+    token = jwt.sign({ admin: false }, process.env.SUPER_SECRET, { expiresIn: 604800 })
 
     if(!token) {
       res.status(401).send({ success: false, msg: 'Couldnt create a token' })
