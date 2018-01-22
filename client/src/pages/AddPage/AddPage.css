@@ -17,7 +17,7 @@
 }
 
 .word-type-section input {
-  border: solid 2px #009688;
+  border: solid 2px rgba(0, 150, 136, 0.44);
 }
 
 .button-section{

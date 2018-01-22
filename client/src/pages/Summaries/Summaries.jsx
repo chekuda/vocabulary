@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
 import { ListGroup, ListGroupItem, Collapse, ListGroupItemHeading, ListGroupItemText } from 'reactstrap'
 import { Post } from '../../components/fetchData/fetchData'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import './Summaries.css';
 
 class Summaries extends Component {
@@ -64,7 +64,6 @@ class Summaries extends Component {
 
   getMarkUpList(){
     const { listOfQuiz } = this.state
-    console.log(listOfQuiz)
     return (
       <ListGroup>
         {
@@ -92,6 +91,7 @@ class Summaries extends Component {
   render() {
     return (
       <div className="Summaries">
+        { this.state.showErrorPage && <Redirect to='/error' />}
         <Header title='Summaries'/>
         { this.state.listOfQuiz.length > 0 &&  this.getMarkUpList() }
         <div className='button-section'>

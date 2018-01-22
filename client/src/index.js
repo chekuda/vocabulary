@@ -15,6 +15,7 @@ import Login from './pages/Login/Login';
 import Verifytf from './components/verifywt/verifywt';
 import PrivateRoute from './components/PrivateRoute/privateRoute';
 import SignUp from './pages/SignUp/SignUp';
+import ErrorPage from './pages/Error/ErrorPage';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
@@ -29,6 +30,7 @@ ReactDOM.render((
       <PrivateRoute path='/summaries' component={ Summaries }/>
       <PrivateRoute path='/updateglosary' component={ UpdateGlosary }/>
       <PrivateRoute path='/addpage' component={ AddPage }/>
+      <Route path='/error' component={ ErrorPage }/>
       {/* <Route path='/projects/:project' component={ Projects }/> */}
     </Switch>
   </Verifytf>
