@@ -10,7 +10,6 @@ exports.getvocabulary = (req, res) => {
     if (err) {
       res.status(401).send({ success: false, msg: err })
     }
-
     res.send({ success: true, data: docs })
   })
 }

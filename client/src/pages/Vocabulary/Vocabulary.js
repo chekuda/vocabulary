@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
 import Processbar from '../../components/Processbar/Processbar.jsx'
 import { Post } from '../../components/fetchData/fetchData'
+import { Redirect } from 'react-router-dom'
 import './Vocabulary.css';
 
-class Vocabulary extends Component {
+export default class Vocabulary extends Component {
 
   constructor(props){
     super(props)
@@ -78,7 +79,7 @@ class Vocabulary extends Component {
   moveToNextStep() {
     if(this.state.current === (this.state.listOfWords.length - 1)) {
       localStorage.setItem('quizResult', JSON.stringify(this.listOfAnswers))
-      window.location.href = '/thanks'
+      this.setState({ quizFinished: true })
     } else {
       this.setState({
         current: this.state.current + 1,
@@ -127,9 +128,8 @@ class Vocabulary extends Component {
         <button
           className="check-button"
           onClick={ () => this.state.buttonState === 'Check' ? this.checkAnswer() : this.moveToNextStep() }>{ this.state.buttonState }</button>
+        { this.state.quizFinished &&  <Redirect to={{ pathname: '/thanks' }}/>}
       </div>
-    );
+    )
   }
 }
-
-export default Vocabulary;

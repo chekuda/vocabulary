@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
 import { Post } from '../../components/fetchData/fetchData'
+import { Redirect } from 'react-router-dom'
 import './AddPage.css'
 
 export default class UpdateGlosary extends Component {
+  constructor(){
+    super()
+    this.state = { wordAdded: false }
+  }
   saveNewWord(){
     if(!this.state.name) return
 
@@ -11,7 +16,7 @@ export default class UpdateGlosary extends Component {
       .then(({ success }) => {
         if(success) {
           alert('Word Saved')
-          window.location.href = '/'
+          this.setState({ wordAdded: true })
         } else{
           alert('Could not save the word, please try again')
         }
@@ -53,7 +58,6 @@ export default class UpdateGlosary extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className='update-glosary'>
         <Header title='Add New Word' />
@@ -63,6 +67,7 @@ export default class UpdateGlosary extends Component {
             Save
           </button>
         </div>
+        { this.state.wordAdded &&  <Redirect to={{ pathname: '/updateglosary' }}/>}
       </div>
     )
   }

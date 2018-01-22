@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
 import { Post } from '../../components/fetchData/fetchData'
 import SearchBar from '../../components/SearchBar/SearchBar'
+import { Link } from 'react-router-dom'
+import { browserHistory } from 'react-router'
 import './UpdateGlosary.css'
 
 export default class UpdateGlosary extends Component {
@@ -16,9 +18,13 @@ export default class UpdateGlosary extends Component {
     }
   }
 
-  componentWillMount(){
+  getWordsFromServer(){
     Post('/api/getvocabulary',{ 'Content-Type': 'application/json' },  { user: this.user })
       .then(({ data }) => this.setState({ vocabulary: data }))
+  }
+
+  componentWillMount(){
+    this.getWordsFromServer()
   }
 
   onSearchTermChange = (current) =>{
@@ -28,7 +34,7 @@ export default class UpdateGlosary extends Component {
 
   removeElement({ wordinEnglish }){
     Post('/api/removeword', { 'Content-Type': 'application/json' }, { word: wordinEnglish })
-      .then(({ success }) => console.log(success))
+      .then(({ success }) => this.getWordsFromServer())
   }
 
   getListVocabularyMarkup(){
@@ -58,7 +64,7 @@ export default class UpdateGlosary extends Component {
       <div className='update-glosary'>
         <Header title='Update Glosary' />
         <SearchBar onSearchTermChange={ this.onSearchTermChange }/>
-        <div className='add-new-one' onClick={ () => window.location.href = '/addpage' }>Add New One <span className='fa fa-plus'></span></div>
+        <Link className='add-new-one' to='/addpage'>Add New One <span className='fa fa-plus'></span></Link>
         { this.state.vocabulary.length > 0 && this.getListVocabularyMarkup() }
       </div>
     )

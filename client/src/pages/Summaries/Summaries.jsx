@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
-import { ListGroup, ListGroupItem, Collapse, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+import { ListGroup, ListGroupItem, Collapse, ListGroupItemHeading, ListGroupItemText } from 'reactstrap'
 import { Post } from '../../components/fetchData/fetchData'
+import { Link } from 'react-router-dom'
 import './Summaries.css';
 
 class Summaries extends Component {
@@ -94,7 +95,7 @@ class Summaries extends Component {
         <Header title='Summaries'/>
         { this.state.listOfQuiz.length > 0 &&  this.getMarkUpList() }
         <div className='button-section'>
-          <button className='main-button' onClick={() => window.location.href = '/'}>Back Home</button>
+          <Link className='main-button' to='/'>Back Home</Link>
         </div>
       </div>
     );
