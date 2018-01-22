@@ -13,7 +13,8 @@
   padding: 0 20px 20px 20px;
 }
 .title{
-  padding: 10px 10px 20px 10px;
+  font-size: 17px;
+  padding: 10px 10px 10px 10px;
 }
 .translation-input{
   text-align: center;
