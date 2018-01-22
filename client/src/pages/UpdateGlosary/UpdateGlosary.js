@@ -3,7 +3,6 @@ import Header from '../../components/Header/Header'
 import { Post } from '../../components/fetchData/fetchData'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import { Link } from 'react-router-dom'
-import { browserHistory } from 'react-router'
 import './UpdateGlosary.css'
 
 export default class UpdateGlosary extends Component {
@@ -64,8 +63,13 @@ export default class UpdateGlosary extends Component {
       <div className='update-glosary'>
         <Header title='Update Glosary' />
         <SearchBar onSearchTermChange={ this.onSearchTermChange }/>
-        <Link className='add-new-one' to='/addpage'>Add New One <span className='fa fa-plus'></span></Link>
-        { this.state.vocabulary.length > 0 && this.getListVocabularyMarkup() }
+        <div><Link className='add-new-one' to='/addpage'>Add New One <span className='fa fa-plus'></span></Link></div>
+        <div>
+          { this.state.vocabulary.length > 0 && this.getListVocabularyMarkup() }
+        </div>
+        <div className='button-section'>
+          <Link className='main-button' to='/'>Back Home</Link>
+        </div>
       </div>
     )
   }

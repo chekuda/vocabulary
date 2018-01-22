@@ -40,11 +40,11 @@ export default class UpdateGlosary extends Component {
       { typeDefinition.map((type, index) => {
           return (
             <div key={index}>
-              <Tooltip className="my-tooltip" placement="top" isOpen={this.state.toggleTip === type} autohide={false} target={type} toggle={() => this.toggle(type)}>
+              <Tooltip className="my-tooltip" placement="bottom" isOpen={this.state.toggleTip === type} autohide={false} target={type} toggle={() => this.toggle(type)}>
                 For instance: first, second, third
               </Tooltip>
               <div className='word-type-section'>
-                <label>{type} Definition</label>
+                <label>{`${type.charAt(0).toUpperCase()}${type.slice(1)}`} Definition</label>
                 <input id={type} onChange={({ target }) => this.onInputChange(target, type)}/>
               </div>
             </div>

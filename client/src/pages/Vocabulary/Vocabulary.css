@@ -19,6 +19,7 @@
 .translation-input{
   text-align: center;
   font-size: 14px;
+  border: solid 2px #009688;
 }
 .center-section{
   padding: 20px 0;
@@ -58,4 +59,5 @@
 }
 .sentence{
   width: 70%;
+  border: solid 2px #009688;
 }
