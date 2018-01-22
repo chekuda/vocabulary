@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Tooltip } from 'reactstrap'
 import Header from '../../components/Header/Header'
 import { Post } from '../../components/fetchData/fetchData'
 import { Redirect } from 'react-router-dom'
@@ -7,7 +8,7 @@ import './AddPage.css'
 export default class UpdateGlosary extends Component {
   constructor(){
     super()
-    this.state = { wordAdded: false }
+    this.state = { wordAdded: false, toggleTip: false }
   }
   saveNewWord(){
     if(!this.state.name) return
@@ -28,30 +29,41 @@ export default class UpdateGlosary extends Component {
     this.setState({ [type]: value })
   }
 
+  toggle(val){
+    this.setState({ toggleTip: val })
+  }
+
+  addDefinitionpMarkup(){
+    const typeDefinition = ['noum', 'verb', 'adjetive', 'adverb']
+    return (
+      <div className='word-definition'>
+      { typeDefinition.map((type, index) => {
+          return (
+            <div key={index}>
+              <Tooltip className="my-tooltip" placement="top" isOpen={this.state.toggleTip === type} autohide={false} target={type} toggle={() => this.toggle(type)}>
+                For instance: first, second, third
+              </Tooltip>
+              <div className='word-type-section'>
+                <label>{type} Definition</label>
+                <input id={type} onChange={({ target }) => this.onInputChange(target, type)}/>
+              </div>
+            </div>
+          )
+        })
+      }
+      </div>
+    )
+  }
+
   addNewOneMarkup(){
     return (
       <div className='new-word'>
         <div className='word-type-section'>
           <label>New Word</label>
-          <input onChange={({ target }) => this.onInputChange(target, 'name')}/>
+          <input id='name' onChange={({ target }) => this.onInputChange(target, 'name')} onClick={() => this.toggle('none')}/>
         </div>
         <div className='word-definition'>
-          <div className='word-type-section'>
-            <label>Noum Definition</label>
-            <input onChange={({ target }) => this.onInputChange(target, 'noum')}/>
-          </div>
-          <div className='word-type-section'>
-            <label>Verb Definition</label>
-            <input onChange={({ target }) => this.onInputChange(target, 'verb')}/>
-          </div>
-          <div className='word-type-section'>
-            <label>Adjetive Definition</label>
-            <input onChange={({ target }) => this.onInputChange(target, 'adjetive')}/>
-          </div>
-          <div className='word-type-section'>
-            <label>Adverb Definition</label>
-            <input onChange={({ target }) => this.onInputChange(target, 'adverb')}/>
-          </div>
+          { this.addDefinitionpMarkup() }
         </div>
       </div>
     )
@@ -67,7 +79,7 @@ export default class UpdateGlosary extends Component {
             Save
           </button>
         </div>
-        { this.state.wordAdded &&  <Redirect to={{ pathname: '/updateglosary' }}/>}
+        { this.state.wordAdded && <Redirect to={{ pathname: '/updateglosary' }}/>}
       </div>
     )
   }
