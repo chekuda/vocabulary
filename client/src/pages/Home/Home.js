@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
+import { Link } from 'react-router-dom'
 import './Home.css';
 
 class Home extends Component {
@@ -21,7 +22,7 @@ class Home extends Component {
     return this.sections.map((section, index) => {
       return (
         <div key={index} className='section'>
-          <a className="Home-intro" href={ section.redirect }>{ section.name }</a>
+          <Link className="Home-intro" to={ section.redirect }>{ section.name }</Link>
         </div>
       )
     })
