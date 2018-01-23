@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header'
 import { Post } from '../../components/fetchData/fetchData'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import { Link } from 'react-router-dom'
+import Modal from '../../components/Modal/Modal'
 import './UpdateGlosary.css'
 
 export default class UpdateGlosary extends Component {
@@ -31,9 +32,51 @@ export default class UpdateGlosary extends Component {
     this.setState({ currentList: currentList, firstLoad: false })
   }
 
-  removeElement({ wordinEnglish }){
-    Post('/api/removeword', { 'Content-Type': 'application/json' }, { word: wordinEnglish })
-      .then(({ success }) => this.getWordsFromServer())
+  removeElement(){
+    Post('/api/removeword', { 'Content-Type': 'application/json' }, { word: this.state.wordToRemove })
+      .then(({ success }) => {
+        if(success) {
+          this.launchModal('success', this.state.wordToRemove)
+        } else {
+          this.launchModal('error', this.state.wordToRemove)
+        }
+
+      })
+  }
+
+  onModalButtonAction = event => {
+    if(event === 'Ok') this.getWordsFromServer()
+    if(event === 'Accept') this.removeElement()
+    this.setState({ enableModal: false })
+  }
+
+  launchModal(type, word){
+    const modalProps = {
+      remove: {
+        title: false,
+        body: `Are you sure you want to remove the word: '${word.toUpperCase()}'`,
+        acceptButton: { enabled: true, text: 'Accept', background: '#6fad6f'},
+        closeButton: { enabled: true, text: 'Cancel', background: '#cc605c' }
+      },
+      error: {
+        title: 'ERROR',
+        body: `The word '${word}' couldnt be removed`,
+        closeButton: { enabled: true, text: 'Ok', background: '#6fad6f' },
+        acceptButton: { enabled: false },
+      },
+      success: {
+        title: 'SUCCESS',
+        body: `The word '${word}' have been removed`,
+        closeButton: { enabled: true, text: 'Ok', background: '#6fad6f' },
+        acceptButton: { enabled: false },
+      }
+    }
+    this.setState({
+      modalProps: modalProps[type],
+      enableModal: true,
+      wordToRemove: word
+    })
+
   }
 
   getListVocabularyMarkup(){
@@ -48,7 +91,7 @@ export default class UpdateGlosary extends Component {
                 <div className='list-word'>{ word.wordinEnglish }</div>
                 <div className='list-icon'>
                   <span className='fa fa-refresh'></span>
-                  <span className='fa fa-times' onClick={() => this.removeElement(word)}></span>
+                  <span className='fa fa-times' onClick={() => this.launchModal('remove', word.wordinEnglish)}></span>
                 </div>
               </li>
             )
@@ -62,6 +105,7 @@ export default class UpdateGlosary extends Component {
     return (
       <div className='update-glosary'>
         <Header title='Update Glosary' />
+        {this.state.enableModal && <Modal {...{ ...this.state.modalProps, oncloseRequest: this.onModalButtonAction }}/> }
         <SearchBar onSearchTermChange={ this.onSearchTermChange }/>
         <div><Link className='add-new-one' to='/addpage'>Add New One <span className='fa fa-plus'></span></Link></div>
         <div>
