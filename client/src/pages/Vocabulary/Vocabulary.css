@@ -36,17 +36,14 @@
 }
 .result {
   display: block;
+  padding: 0 10px;
   width: 100%;
   text-align: left;
 }
-.result .green{
-  background-color: green;
-  padding: 5px 0;
+.result ul{
+  list-style: none
 }
-.result .red{
-  background-color: red;
-  padding: 5px 0;
-}
+
 .word{
   padding: 10px;
   font-weight: bold;

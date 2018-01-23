@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header.jsx'
 import Processbar from '../../components/Processbar/Processbar.jsx'
 import { Post } from '../../components/fetchData/fetchData'
 import { Redirect } from 'react-router-dom'
+import { Alert } from 'reactstrap'
 import './Vocabulary.css';
 
 export default class Vocabulary extends Component {
@@ -95,9 +96,11 @@ export default class Vocabulary extends Component {
     const { definition = {} } = this.listOfAnswers[this.listOfAnswers.length - 1]
 
     return (
-      <ul>
-       { Object.keys(definition).map((ele, index) => definition[ele].length > 0 && <li key={index}><strong>{ ele }</strong>{`: ${definition[ele].join(', ')}`}</li>)}
-      </ul>
+      <Alert color={this.state.resultColor} >
+        <ul>
+        { Object.keys(definition).map((ele, index) => definition[ele].length > 0 && <li key={index}><strong>{ ele }</strong>{`: ${definition[ele].join(', ')}`}</li>)}
+        </ul>
+      </Alert>
     )
   }
 
@@ -109,7 +112,7 @@ export default class Vocabulary extends Component {
     const answerIsinDefinition = Object.keys(currentWord.definition).reduce((acc, prop) => currentWord.definition[prop].includes(this.state.answer.toLocaleLowerCase()) ? acc + 1 : acc, 0)
     const isRightAnswer = answerIsinDefinition > 0
 
-    this.setState({ resultColor: isRightAnswer ? 'green' : 'red' })
+    this.setState({ resultColor: isRightAnswer ? 'success' : 'danger' })
     this.setState({ buttonState: 'Next' })
     this.listOfAnswers.push(this.setAnswerObject(isRightAnswer))
   }
@@ -121,9 +124,7 @@ export default class Vocabulary extends Component {
         { this.state.listOfWords.length > 0 && <Processbar current={ this.state.current } vocabulary={ this.state.listOfWords }/> }
         { this.state.listOfWords.length > 0 && this.getQuizMarqup() }
         <div className='result'>
-        { this.state.answer && this.state.resultColor &&
-          <div className={ this.state.resultColor }>{ this.displayResult() }</div>
-        }
+        { this.state.answer && this.state.resultColor && this.displayResult() }
         </div>
         <button
           className="check-button"
