@@ -4,7 +4,10 @@
   Also a REST API will be set up here
 
   ### Run it
-    npm install && npm run start
+    npm install
+    Afterwards I will have to run two servers.
+      FrontEnd: npm run --prefix ./client/ start
+      BackEnd: npm start
     `ie: localhost:3000//api/getvocabulary/vocabulary.json`
 
   ### REST API
