@@ -1,0 +1,23 @@
+.signup-container {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 20px;
+}
+.signup-block{
+  padding: 10px;
+  background: #a2bfbd;
+  border-radius: 5px;
+}
+.signup-button {
+  margin-top: 10px;
+}
+.l-button{
+  width: 100%;
+  background: #009688;
+  border: 0;
+  padding: 10px;
+  color: #fff;
+}
+.cpassword {
+  padding-top: 10px;
+}

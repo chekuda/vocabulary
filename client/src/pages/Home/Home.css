@@ -3,11 +3,6 @@
   background-color: #eaeaea;
 }
 
-.Home-logo {
-  animation: Home-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .Home-header {
   background-color: #222;
   padding: 20px;
@@ -31,9 +26,4 @@
   margin: 5px;
   height: 100px;
   background-color: #6f8dc5;
-}
-
-@keyframes Home-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

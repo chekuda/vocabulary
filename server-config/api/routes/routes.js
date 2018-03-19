@@ -1,13 +1,24 @@
-const listControllers = require('../controllers/controllers')
+const express = require('express')
+const wordController = require('../controllers/wordcontrollers')
+const quizControllers = require('../controllers/quizcontrollers')
+const userControllers = require('../controllers/usercontrollers')
 
-//API routes
-module.exports = (app) => {
-  app.route('/api/getvocabulary/:file')
-    .get(listControllers.getvocabulary)
+const apirouter = express.Router()
 
-  app.route('/api/getListOfTests')
-    .get(listControllers.getListOfTests)
+apirouter.post('/getvocabulary', wordController.getvocabulary)
 
-  app.route('/api/savetest')
-    .post(listControllers.savetest)
-}
+apirouter.post('/getlistofquiz', quizControllers.listOfQuiz)
+
+apirouter.post('/savequiz', quizControllers.savequiz)
+
+apirouter.post('/addnewword', wordController.addnewword)
+
+apirouter.post('/removeword', wordController.removeword)
+
+apirouter.post('/login', userControllers.login)
+
+apirouter.post('/signup', userControllers.signup)
+
+apirouter.get('/verifytoken', userControllers.verifytoken)
+
+exports.apirouter = apirouter

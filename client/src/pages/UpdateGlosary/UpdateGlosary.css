@@ -1,0 +1,63 @@
+
+.vocabulary-list{
+  width: 75%;
+  margin: 0 auto;
+}
+.words-list{
+  position: relative;
+  padding: 5px;
+  list-style-type: circle;
+}
+
+.list-word{
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.list-icon{
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.button-section{
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.main-button{
+  margin: 30px;
+  padding: 10px;
+  border: transparent;
+  background-color: #009688;
+  width: 150px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.fa.fa-refresh{
+  padding-right: 10px;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: green;
+}
+.fa.fa-times{
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: red;
+}
+.add-new-one{
+  display: block;
+  padding: 5px;
+  color: #000;
+  font-size: 20px;
+  text-align: center;
+}
+.fa-plus{
+  color: #fff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}

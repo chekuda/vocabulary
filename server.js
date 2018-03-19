@@ -1,20 +1,20 @@
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
-const commonPaths = require('./server-config/commons-paths/common-paths')
+const cors = require('cors')
 const routes = require('./server-config/api/routes/routes')
+const dbconnection = require('./server-config/dbconnection/config')
 
+const port = process.env.PORT || 5000
 const app = express()
 
-const port = process.env.PORT || 3000
+dbconnection.createMongooseConection()
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
-app.use(express.static(__dirname + '/client/build/'))
-
-routes(app)
-
-app.get('*', (req, res) => res.sendFile(__dirname + '/client/build/index.html'))
+app.use('/api', routes.apirouter)
 
 app.listen(port)
 

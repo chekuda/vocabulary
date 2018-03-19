@@ -42,6 +42,7 @@
 .button-section{
   display: flex;
   justify-content: center;
+  padding-top: 15px;
 }
 .main-button{
   margin: 30px;

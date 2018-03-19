@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
 import Processbar from '../../components/Processbar/Processbar.jsx'
-import { Get } from '../../components/fetchData/fetchData'
+import { Post } from '../../components/fetchData/fetchData'
+import { Redirect } from 'react-router-dom'
+import { Alert } from 'reactstrap'
 import './Vocabulary.css';
 
-class Home extends Component {
+export default class Vocabulary extends Component {
 
   constructor(props){
     super(props)
+    this.user = window.localStorage.getItem('vocabulary-user') || ''
     this.state = {
       listOfWords: [],
       current: 0,
@@ -20,14 +23,14 @@ class Home extends Component {
   }
 
   componentWillMount(){
-    Get(`/api/getvocabulary/vocabulary`)
-      .then(res => this.setState({ listOfWords: this.suffleTheArray(res) }))
+    Post('/api/getvocabulary',{ 'Content-Type': 'application/json' },  { user: this.user })
+      .then(({ data }) => this.setState({ listOfWords: this.suffleTheArray(data) }))
   }
 
   suffleTheArray(vocabulary) {
     if(!vocabulary) return []
 
-    return vocabulary.words.sort(() => Math.random() * 2 - 1);
+    return vocabulary.sort(() => Math.random() * 2 - 1);
   }
 
   onInputChange(value, type){
@@ -38,7 +41,7 @@ class Home extends Component {
     }
   }
 
-  getTestMarkup(){
+  getQuizMarqup(){
     const { current, listOfWords } = this.state
     const currentWord = listOfWords[current]
 
@@ -76,8 +79,8 @@ class Home extends Component {
 
   moveToNextStep() {
     if(this.state.current === (this.state.listOfWords.length - 1)) {
-      sessionStorage.setItem('testResult', JSON.stringify(this.listOfAnswers))
-      window.location.href = '/thanks'
+      localStorage.setItem('quizResult', JSON.stringify(this.listOfAnswers))
+      this.setState({ quizFinished: true })
     } else {
       this.setState({
         current: this.state.current + 1,
@@ -93,9 +96,11 @@ class Home extends Component {
     const { definition = {} } = this.listOfAnswers[this.listOfAnswers.length - 1]
 
     return (
-      <ul>
-       { Object.keys(definition).map((ele, index) => definition[ele].length > 0 && <li key={index}><strong>{ ele }</strong>{`: ${definition[ele].join(', ')}`}</li>)}
-      </ul>
+      <Alert color={this.state.resultColor} >
+        <ul>
+        { Object.keys(definition).map((ele, index) => definition[ele].length > 0 && <li key={index}><strong>{ ele }</strong>{`: ${definition[ele].join(', ')}`}</li>)}
+        </ul>
+      </Alert>
     )
   }
 
@@ -107,28 +112,25 @@ class Home extends Component {
     const answerIsinDefinition = Object.keys(currentWord.definition).reduce((acc, prop) => currentWord.definition[prop].includes(this.state.answer.toLocaleLowerCase()) ? acc + 1 : acc, 0)
     const isRightAnswer = answerIsinDefinition > 0
 
-    this.setState({ resultColor: isRightAnswer ? 'green' : 'red' })
+    this.setState({ resultColor: isRightAnswer ? 'success' : 'danger' })
     this.setState({ buttonState: 'Next' })
     this.listOfAnswers.push(this.setAnswerObject(isRightAnswer))
   }
 
   render() {
     return (
-      <div className="Home">
+      <div className="Vocabulary">
         <Header title='Vocabulary' />
-        { this.state.listOfWords.length > 0 && <Processbar current={this.state.current}/> }
-        { this.state.listOfWords.length > 0 && this.getTestMarkup() }
+        { this.state.listOfWords.length > 0 && <Processbar current={ this.state.current } vocabulary={ this.state.listOfWords }/> }
+        { this.state.listOfWords.length > 0 && this.getQuizMarqup() }
         <div className='result'>
-        { this.state.answer && this.state.resultColor &&
-          <div className={ this.state.resultColor }>{ this.displayResult() }</div>
-        }
+        { this.state.answer && this.state.resultColor && this.displayResult() }
         </div>
         <button
           className="check-button"
           onClick={ () => this.state.buttonState === 'Check' ? this.checkAnswer() : this.moveToNextStep() }>{ this.state.buttonState }</button>
+        { this.state.quizFinished &&  <Redirect to={{ pathname: '/thanks' }}/>}
       </div>
-    );
+    )
   }
 }
-
-export default Home;

@@ -1,0 +1,50 @@
+.update-glosary {
+  background: #e0dede;
+}
+.new-word {
+  display: block;
+  padding: 10px 0 0 0;
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+}
+
+.word-type-section label {
+  display: block;
+}
+.word-type-section {
+  padding-bottom: 15px;
+}
+
+.word-type-section input {
+  border: solid 2px rgba(0, 150, 136, 0.44);
+}
+
+.button-section{
+  display: block;
+  text-align: center;
+}
+.save-button {
+  margin: 30px;
+  padding: 10px;
+  border: transparent;
+  background-color: #009688;
+  width: 100px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.tooltip{
+  transition: opacity 0.3s ease-in-out;
+}
+.my-tooltip .tooltip-inner {
+  background: #009688;
+}
+
+.my-tooltip .arrow::before  {
+  margin-left: -3px;
+  content: "";
+  border-width: 0 5px 5px;
+  border-bottom-color: #009688 !important;
+  border-top-color: #009688 !important;
+}

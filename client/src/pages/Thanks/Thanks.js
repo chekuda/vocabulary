@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx'
 import { Post } from '../../components/fetchData/fetchData'
+import { Link } from 'react-router-dom'
 import './Thanks.css';
 
 class Thanks extends Component {
   constructor(props){
     super(props)
     this.results = this.getResults()
+    this.user = window.localStorage.getItem('vocabulary-user') || ''
   }
 
   componentDidMount(){
     if(!this.results.length) return
 
-    Post(`/api/savetest`, { 'Content-Type': 'application/json' }, this.results)
+
+    Post(`/api/savequiz`, { 'Content-Type': 'application/json' },  { results: this.results, user: this.user })
       .then(({ success }) => console.log('Files has been saved? =>', success))
   }
 
   getResults(){
-    const results = sessionStorage.getItem('testResult')
+    const results = localStorage.getItem('quizResult')
     return  results ? JSON.parse(results) : []
   }
 
@@ -45,6 +48,7 @@ class Thanks extends Component {
     )
   }
 
+
   render() {
     return (
       <div className="Thanks">
@@ -52,7 +56,7 @@ class Thanks extends Component {
         { this.getOveralView() }
         { this.displayResults() }
         <div className='button-section'>
-          <button className='main-button' onClick={() => window.location.href = '/'}>Back Home</button>
+          <Link className='main-button' to='/'>Back Home</Link>
         </div>
       </div>
     );
