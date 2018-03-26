@@ -11,7 +11,7 @@
     `ie: localhost:3000//api/getvocabulary/vocabulary.json`
 
   ### Run it in the server
-    copy data from .env and npm install
+    copy data from .env and npm install (remoteDBURL and superSecret)
     Stop Servers already running. ie: forever list and forever stop ${uid}
     Afterwards I will have to run two servers.
       FrontEnd: forever start -a --uid frontEnd -c "npm start" ./client
