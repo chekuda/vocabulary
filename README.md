@@ -4,11 +4,12 @@
   Also a REST API will be set up here
 
   ### Run it Localy
-    npm install
+    1 - npm install on root directory
+    2 - npm install on client directory
     Afterwards I will have to run two servers.
       FrontEnd: npm run --prefix ./client/ start
       BackEnd: npm start
-    `ie: localhost:3000//api/getvocabulary/vocabulary.json`
+    `ie: localhost:3000/api/getvocabulary/vocabulary.json`
 
   ### Run it in the server
     copy data from .env and npm install (remoteDBURL and superSecret)
