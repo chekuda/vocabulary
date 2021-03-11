@@ -21,6 +21,10 @@ export default class UpdateGlosary extends Component {
   getWordsFromServer(){
     Post('/api/getvocabulary',{ 'Content-Type': 'application/json' },  { user: this.user })
       .then(({ data }) => this.setState({ vocabulary: data }))
+      .catch(e => {
+        console.log(e)
+        this.props.history.push('/login')
+      })
   }
 
   componentWillMount(){
@@ -40,7 +44,10 @@ export default class UpdateGlosary extends Component {
         } else {
           this.launchModal('error', this.state.wordToRemove)
         }
-
+      })
+      .catch(e => {
+        console.log(e)
+        this.props.history.push('/login')
       })
   }
 

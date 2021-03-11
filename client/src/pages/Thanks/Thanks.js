@@ -17,6 +17,10 @@ class Thanks extends Component {
 
     Post(`/api/savequiz`, { 'Content-Type': 'application/json' },  { results: this.results, user: this.user })
       .then(({ success }) => console.log('Files has been saved? =>', success))
+      .catch(e => {
+        console.log(e)
+        this.props.history.push('/login')
+      })
   }
 
   getResults(){

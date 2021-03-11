@@ -25,6 +25,11 @@ export default class Vocabulary extends Component {
   componentWillMount(){
     Post('/api/getvocabulary',{ 'Content-Type': 'application/json' },  { user: this.user })
       .then(({ data }) => this.setState({ listOfWords: this.suffleTheArray(data) }))
+      .catch(e => {
+        console.log(e)
+        this.props.history.push('/login')
+      })
+
   }
 
   suffleTheArray(vocabulary) {

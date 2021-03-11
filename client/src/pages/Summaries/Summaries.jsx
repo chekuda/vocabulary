@@ -18,6 +18,10 @@ class Summaries extends Component {
   componentWillMount(){
     Post('/api/getlistofquiz', { 'Content-Type': 'application/json' },  { user: this.user })
       .then(({ listOfQuiz }) => this.setState({ listOfQuiz }))
+      .catch(e => {
+        console.log(e)
+        this.props.history.push('/login')
+      })
   }
 
   displayResults(results){

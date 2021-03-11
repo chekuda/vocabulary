@@ -14,12 +14,16 @@ export default class UpdateGlosary extends Component {
 
   saveNewWord(){
     Post('/api/addnewword', { 'Content-Type': 'application/json' }, this.state)
-      .then(({ success }) => {
+      .then(({ success } = {}) => {
         if(success) {
           this.launchModal('success')
         } else{
           this.launchModal('error')
         }
+      })
+      .catch(e => {
+        console.log(e)
+        this.props.history.push('/login')
       })
   }
 

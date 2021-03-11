@@ -27,6 +27,10 @@ export class Login extends Component {
           this.setState({ didLogin: true })
         }
       })
+      .catch(e => {
+        console.log(e)
+        this.props.history.push('/login')
+      })
   }
 
 
@@ -48,6 +52,9 @@ export class Login extends Component {
           </div>
           <div className='login-button'>
             <button type='button' className="l-button" id='login' onClick={() => this.login()}>Login</button>
+          </div>
+          <div className='login-button'>
+            <button type='button' className="l-button" id='signup' onClick={() => this.props.history.push('/signup')}>SignUp</button>
           </div>
         </div>
       </div>

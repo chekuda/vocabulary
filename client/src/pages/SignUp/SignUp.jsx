@@ -40,6 +40,10 @@ export class SignUp extends Component {
           this.setState({ didsignup: true })
         }
       })
+      .catch(e => {
+        console.log(e)
+        this.props.history.push('/login')
+      })
   }
 
 
