@@ -1,7 +1,5 @@
 
-const builEndPoint = endpoint => {
-  return process.env.REACT_APP_DEV_ENV ? 'http://localhost:5000' + endpoint : endpoint
-}
+const builEndPoint = endpoint => 'http://localhost:5000' + endpoint
 
 export const Post = (endPoint, headers = {}, body) => {
   const rightEnpoint = builEndPoint(endPoint)

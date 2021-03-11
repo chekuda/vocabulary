@@ -1,9 +1,6 @@
-import React, { Component, Children } from 'react'
+import { Component } from 'react'
 import jwtdecode from 'jwt-decode'
-import Login from '../../pages/Login/Login'
 import { Get } from '../fetchData/fetchData'
-import { Redirect } from 'react-router-dom'
-
 export default class Verifytf extends Component{
   constructor(props){
     super(props)

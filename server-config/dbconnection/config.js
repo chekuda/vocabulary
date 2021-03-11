@@ -1,24 +1,16 @@
-const mongoose = require('mongoose')
+//Import the mongoose module
+var mongoose = require('mongoose');
 
-exports.createMongooseConection = () => {
-  mongoose.connect(process.env.REMOTE_URI_DB, { useMongoClient: true })
-
-  mongoose.connection.on('connected', () => {
-    console.log('Mongoose default connection open')
-  })
-
-  mongoose.connection.on('error', err => {
-    console.log('Mongoose default connection error: ' + err)
-  })
-
-  mongoose.connection.on('disconnected', err => {
-    console.log('Mongoose default connection disconnected')
-  })
-
-  process.on('SIGINT', err => {
-    mongoose.connection.close(() => {
-      console.log('Mongoose default connection disconnected through app termination')
-      process.exit(0)
-    })
-  })
+const createMongooseConection = () => {
+  //Set up default mongoose connection
+  var mongoDB = 'mongodb://127.0.0.1/vocabulary';
+  mongoose.connect(mongoDB, { useMongoClient: true });
+  
+  //Get the default connection
+  var db = mongoose.connection;
+  
+  //Bind connection to error event (to get notification of connection errors)
+  db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 }
+
+exports.createMongooseConection = createMongooseConection
