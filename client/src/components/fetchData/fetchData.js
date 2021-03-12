@@ -1,5 +1,5 @@
 
-const builEndPoint = endpoint => 'http://localhost:5000' + endpoint
+const builEndPoint = endpoint => 'http://localhost:5001' + endpoint
 
 export const Post = (endPoint, headers = {}, body) => {
   const rightEnpoint = builEndPoint(endPoint)
@@ -10,7 +10,7 @@ export const Post = (endPoint, headers = {}, body) => {
             body: JSON.stringify(body)
           })
           .then(res => res.json())
-          .catch(({ msg }) => console.log(msg))
+          .catch(({ msg } = {}) => console.log(msg))
 }
 
 export const Get = (endPoint, headers = {}) => {

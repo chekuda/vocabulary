@@ -42,7 +42,7 @@ export default class Verifytf extends Component{
         'Authentication': `Bearer ${wt}`
       }
     })
-    .then(({ success, msg }) => {
+    .then(({ success, msg } = {}) => {
       if(success) {
         this.setAuthedInSession(true)
         this.setState({
